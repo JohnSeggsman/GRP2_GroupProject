@@ -3,17 +3,20 @@
 public class AudioManager : MonoBehaviour
 {
     // Variables
-    public static AudioManager instance;
+    public static AudioManager Instance;
     public AudioSource audioBGM;
     private AudioSource audioSource;
     void Start()
     {
-        if (instance == null)
-            instance = this;
+        DontDestroyOnLoad(this);
+
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
 
         audioBGM.Play();
         audioSource = GetComponent<AudioSource>();
-        DontDestroyOnLoad(this);
     }
 
     public void PlayBGM()
