@@ -7,9 +7,12 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        DontDestroyOnLoad(this);
+
         if (Instance == null)
             Instance = this;
-        DontDestroyOnLoad(this);
+        else
+            Destroy(gameObject);
     }
 
     void Update()

@@ -1114,9 +1114,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3e9611c431d1c14e8ff47a91c33ed81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SportsID: []
-  SportsImage: []
-  SportsName: []
+  SportsID:
+  - 
+  - Ocean Swimming
+  - 
+  SportsImage:
+  - {fileID: 0}
+  - {fileID: 21300000, guid: 171547535afbbef47a67a8f4f3677e68, type: 3}
+  - {fileID: 0}
+  SportsName:
+  - 
+  - Swimming
+  - 
   HeaderText: {fileID: 1861653626}
   SportsTabLocation: {fileID: 607053535}
   SportsTabPrefab: {fileID: 5319763296794179279, guid: 02c9190d5d9de5b4c9340b0c9d654505,
