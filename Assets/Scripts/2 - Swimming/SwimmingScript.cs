@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Sprites;
 
-public class MovementTest : MonoBehaviour
+public class SwimmingScript : MonoBehaviour
 {
     [SerializeField] private float AIR;
     [SerializeField] private float timer;

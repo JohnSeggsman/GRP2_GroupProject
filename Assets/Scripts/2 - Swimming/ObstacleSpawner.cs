@@ -6,7 +6,7 @@ public class ObstacleSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] Obstacles;
     [SerializeField] private GameObject[] Spawns;
-    [SerializeField] private MovementTest MT;
+    [SerializeField] private SwimmingScript MT;
     [SerializeField] private int fishChance;
 
 
@@ -20,7 +20,7 @@ public class ObstacleSpawner : MonoBehaviour
     {
         fishChance = 95;
         InvokeRepeating("SpawningObject", 1.0f, 1.0f);
-        MT = GameObject.Find("StickestMan").GetComponent<MovementTest>();
+        MT = GameObject.Find("StickestMan").GetComponent<SwimmingScript>();
     }
 
     private void Update()
@@ -47,7 +47,6 @@ public class ObstacleSpawner : MonoBehaviour
         if (aboveCounter < 2)
         {
             Instantiate(Obstacles[randObs], Spawns[randSpawn].transform.position, Quaternion.identity);
-            Debug.Log(randChances);
             if (randSpawn == 0 && randChances >= fishChance)
             {
                 Instantiate(Obstacles[2], Spawns[1].transform.position, Quaternion.identity);
@@ -62,7 +61,6 @@ public class ObstacleSpawner : MonoBehaviour
             randSpawn = 1;
             aboveCounter = 0;
             Instantiate(Obstacles[randObs], Spawns[randSpawn].transform.position, Quaternion.identity);
-            Debug.Log(randChances);
             if (randSpawn == 0 && randChances >= fishChance)
             {
                 Instantiate(Obstacles[2], Spawns[1].transform.position, Quaternion.identity);
