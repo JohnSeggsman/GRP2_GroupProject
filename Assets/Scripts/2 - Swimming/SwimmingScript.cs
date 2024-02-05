@@ -14,12 +14,15 @@ public class SwimmingScript : MonoBehaviour
     [SerializeField] private BoxCollider2D playerCollider;
     [SerializeField] private GameObject BubbleSprite;
     [SerializeField] private Sprite[] Bubbles;
-    [SerializeField] private AudioClip[] audioClips;
+    [SerializeField] private GameObject backgroundScroll;
     [SerializeField] private GameObject LoseAnim;
     [SerializeField] private AudioManager audioSource;
+    [SerializeField] private AudioClip[] audioClips;
 
     [SerializeField] private Button[] buttons; //MainMenuScene
     [SerializeField] private GameObject PauseMenu;
+
+    [SerializeField] private bool IMMORTALITY;
 
     private ObstacleSpawner OS;
     private SpriteRenderer SR;
@@ -104,11 +107,12 @@ public class SwimmingScript : MonoBehaviour
     private void TimerFunction()
     {
         meterTxt.text = meterCount + "M" + " / " + "1000M";
-        if (timer < 5)
+        backgroundScroll.transform.position -= new Vector3((0.5f  * Time.deltaTime), 0, 0);
+        if (timer < 3)
         {
             timer += Time.deltaTime;
         }
-        else if (timer >= 5)
+        else if (timer >= 3)
         {
             meterCount += 50;
             timer = 0;
@@ -248,7 +252,7 @@ public class SwimmingScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Obstacle") && !gameOver)
+        if (collision.gameObject.CompareTag("Obstacle") && !gameOver && !IMMORTALITY)
         {
             LoseAnim.SetActive(true);
             audioSource.audioBGM.clip = audioClips[1];
@@ -261,7 +265,7 @@ public class SwimmingScript : MonoBehaviour
             transform.position = new Vector3(-5.55f, -1.65f, 0);
             Destroy(collision.gameObject);
         }
-        if (collision.gameObject.CompareTag("Fishes") && !gameOver)
+        if (collision.gameObject.CompareTag("Fishes") && !gameOver && !IMMORTALITY)
         {
             AIR += 20;
             Destroy(collision.gameObject);

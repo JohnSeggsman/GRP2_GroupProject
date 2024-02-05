@@ -9,7 +9,6 @@ public class ObstacleScript : MonoBehaviour
 
     private void Start()
     {
-        speed = 10;
         if (this.gameObject.CompareTag("Fishes"))
         {
             if (this.transform.position.y == -0.8f)
