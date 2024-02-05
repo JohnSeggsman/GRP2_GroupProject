@@ -8,6 +8,7 @@ public class SmoothCameraScript : MonoBehaviour
     public float smoothTime;
     private Vector3 velocity = Vector3.zero;
     public Transform target;
+    public Transform player;
     public Throwable throwable;
     private void Awake()
     {
@@ -26,6 +27,13 @@ public class SmoothCameraScript : MonoBehaviour
         if(throwable.toggleOnce == true)
         {
             //target = throwable.weaponInst.transform;
+            smoothTime = 0f;
+            Vector3 targetPosition = target.transform.position + offset;
+            transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+        }
+        else
+        {
+            smoothTime = 1f;
             Vector3 targetPosition = target.transform.position + offset;
             transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
         }

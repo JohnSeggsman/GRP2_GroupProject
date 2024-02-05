@@ -5,12 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class Throwable : MonoBehaviour
 {
+    public float mashDelay = 0.5f;
+
+    float mash;
+    bool pressed;
 
     public float power;
     float angle;
-    float speed;
-    float acceleration = 5f;
-    float deceleration = 10f;
+    public float speed;
+    float buttonCooler = 0.5f;
+    int buttonCount = 0;
 
     public Vector2 minPower, maxPower;
 
@@ -19,10 +23,6 @@ public class Throwable : MonoBehaviour
     public Rigidbody2D rb;
 
     Camera cam;
-    Vector2 force;
-    Vector2 worldPosition;
-    Vector2 direction;
-    Vector3 rotation1;
 
     public GameObject weapon;
     public GameObject weaponInst;
@@ -55,6 +55,7 @@ public class Throwable : MonoBehaviour
         currentArmValue = maxArmValue;
         armIncreasing = false;
         armOn = true;
+        mash = mashDelay;
         StartCoroutine(UpdateDirection());
     }
     // Update is called once per frame
@@ -64,7 +65,8 @@ public class Throwable : MonoBehaviour
         {
             StopAllCoroutines();
         }
-        if(Input.GetKey(KeyCode.A))
+        /*
+        if(Input.GetKeyDown(KeyCode.A))
         {
             if(Input.GetKeyUp(KeyCode.D))
             {
@@ -72,21 +74,40 @@ public class Throwable : MonoBehaviour
                 //rb.AddForce(player.transform.right * speed, ForceMode2D.Force);
             }
         }
+        */
+        /*
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+        {
+            if(buttonCooler > 0 && buttonCount == 2)
+            {
+                isRun = true;
+            }
+            else
+            {
+                buttonCooler = 0.5f;
+                buttonCount += 1;
+            }
+        }
+
+        if (buttonCooler > 0)
+        {
+            buttonCooler -= 1 * Time.deltaTime;
+        }
+        else
+        {
+            buttonCount = 0;
+        }
+        
         if (!Input.anyKey)
         {
             isRun = false;
         }
-        
+        */
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+        {
+            isRun = true;
+        }
 
-        if(isRun == true)
-        {
-            speed += 2 * Time.deltaTime;
-            rb.AddForce(player.transform.right * speed, ForceMode2D.Force);
-        }
-        else if(isRun == false)
-        {
-            speed = 0f;
-        }
         HandleGunRotation();
         
 
@@ -101,11 +122,36 @@ public class Throwable : MonoBehaviour
             }
             
         }
-        
+        if (isRun == true)
+        {
+            mash -= Time.deltaTime;
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) && !pressed)
+            {
+                rb.velocity = rb.velocity.normalized * speed;
+                speed += Time.deltaTime;
+                rb.AddForce(player.transform.right * speed, ForceMode2D.Impulse);
+                pressed = true;
+                mash = mashDelay;
+            }
+            else if (Input.GetKeyUp(KeyCode.A))
+            {
+                pressed = false;
+            }
+            if (mash <= 0)
+            {
+                isRun = false;
+                //rb.velocity = Vector2.zero;
+            }
+        }
+        else if (isRun == false)
+        {
+            speed = 0.5f;
+            //rb.velocity = Vector2.zero;
+        }
     }
     private void FixedUpdate()
     {
-
+        
     }
 
     public void HandleGunRotation()
