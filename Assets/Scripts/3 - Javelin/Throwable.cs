@@ -8,7 +8,7 @@ public class Throwable : MonoBehaviour
 
     public float power;
     float angle;
-    float speed = 5;
+    float speed;
     float acceleration = 5f;
     float deceleration = 10f;
 
@@ -39,6 +39,7 @@ public class Throwable : MonoBehaviour
     bool armIncreasing;
     public bool armOn;
     Vector2 velocity = Vector2.zero;
+    bool isRun = false;
 
     private void Awake()
     {
@@ -62,14 +63,29 @@ public class Throwable : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
         {
             StopAllCoroutines();
-            rb.AddForce(player.transform.right * speed, ForceMode2D.Force);
         }
         if(Input.GetKey(KeyCode.A))
         {
             if(Input.GetKeyUp(KeyCode.D))
             {
-
+                isRun = true;
+                //rb.AddForce(player.transform.right * speed, ForceMode2D.Force);
             }
+        }
+        if (!Input.anyKey)
+        {
+            isRun = false;
+        }
+        
+
+        if(isRun == true)
+        {
+            speed += 2 * Time.deltaTime;
+            rb.AddForce(player.transform.right * speed, ForceMode2D.Force);
+        }
+        else if(isRun == false)
+        {
+            speed = 0f;
         }
         HandleGunRotation();
         
