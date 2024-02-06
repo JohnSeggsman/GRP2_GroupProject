@@ -24,10 +24,12 @@ public class SwimmingScript : MonoBehaviour
 
     [SerializeField] private bool IMMORTALITY;
 
+    [SerializeField] private Vector3 oriPosBack, oriPosEnd;
+    private GameObject endPoint;
     private ObstacleSpawner OS;
     private SpriteRenderer SR;
     private Animator animator;
-    private int meterCount;
+    public int meterCount;
 
     public bool gameOver;
     private bool isPaused;
@@ -41,6 +43,12 @@ public class SwimmingScript : MonoBehaviour
         BubbleSprite.SetActive(false);
         audioSource.audioBGM.clip = audioClips[0];
         audioSource.audioBGM.Play();
+
+        oriPosBack = new Vector3(3.5f, -1, 0);
+        oriPosEnd = new Vector3(18.8f, -2.59f, 0);
+
+        backgroundScroll.transform.position = oriPosBack;
+        endPoint.transform.position = oriPosEnd;
     }
 
     #region StartSetUp
@@ -62,6 +70,7 @@ public class SwimmingScript : MonoBehaviour
         animator = this.GetComponent<Animator>();
         audioSource = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         OS = GameObject.Find("ObstacleSpawner").GetComponent<ObstacleSpawner>();
+        endPoint = GameObject.Find("EndPoint");
     }
 
     private void ButtonSetUp()
@@ -100,22 +109,35 @@ public class SwimmingScript : MonoBehaviour
                 OxygenFunction();
                 MovementFunction();
                 TimerFunction();
+                EndPointAnimation();
             }
         }
     }
 
     private void TimerFunction()
     {
-        meterTxt.text = meterCount + "M" + " / " + "1000M";
-        backgroundScroll.transform.position -= new Vector3((0.5f  * Time.deltaTime), 0, 0);
-        if (timer < 3)
+        meterTxt.text = meterCount + "M" + " / " + "100M";
+
+        if (backgroundScroll.transform.position.x > -3.5)
         {
-            timer += Time.deltaTime;
+            backgroundScroll.transform.position -= new Vector3((0.15f * Time.deltaTime), 0, 0);
         }
-        else if (timer >= 3)
+
+        if (meterCount >= 100)
         {
-            meterCount += 50;
-            timer = 0;
+
+        }
+        else
+        {
+            if (timer < 1)
+            {
+                timer += Time.deltaTime;
+            }
+            else if (timer >= 1)
+            {
+                meterCount += 2;
+                timer = 0;
+            }
         }
     }
 
@@ -215,6 +237,14 @@ public class SwimmingScript : MonoBehaviour
         }
     }
 
+    private void EndPointAnimation()
+    {
+        if (meterCount >= 96)
+        {
+            endPoint.transform.position -= new Vector3((5 * Time.deltaTime), 0, 0);
+        }
+    }
+
     private void OnResume()
     {
         Debug.Log("Your mother");
@@ -223,6 +253,8 @@ public class SwimmingScript : MonoBehaviour
     private void OnRetry()
     {
         OS.InvokeRepeating("SpawningObject", 1.0f, 1.0f);
+        endPoint.transform.position = oriPosEnd;
+        backgroundScroll.transform.position = oriPosBack;
         PauseMenu.SetActive(false);
         Time.timeScale = 1;
         AIR = 100;
@@ -265,7 +297,7 @@ public class SwimmingScript : MonoBehaviour
             transform.position = new Vector3(-5.55f, -1.65f, 0);
             Destroy(collision.gameObject);
         }
-        if (collision.gameObject.CompareTag("Fishes") && !gameOver && !IMMORTALITY)
+        if (collision.gameObject.CompareTag("Fishes") && !gameOver)
         {
             AIR += 20;
             Destroy(collision.gameObject);

@@ -25,7 +25,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (MT.gameOver)
+        if (MT.gameOver || MT.meterCount >= 94)
         {
             CancelInvoke("SpawningObject");
         }
