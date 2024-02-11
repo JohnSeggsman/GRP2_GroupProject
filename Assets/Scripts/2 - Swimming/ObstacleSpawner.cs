@@ -6,9 +6,8 @@ public class ObstacleSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] Obstacles;
     [SerializeField] private GameObject[] Spawns;
-    [SerializeField] private SwimmingScript MT;
-    [SerializeField] private int fishChance;
-
+    [SerializeField] private SwimmingScript SS;
+    [SerializeField] private int bubblesChance;
 
     private int randChances;
     private int randObs;
@@ -18,24 +17,35 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void Start()
     {
-        fishChance = 95;
+        bubblesChance = 95;
         InvokeRepeating("SpawningObject", 1.0f, 1.0f);
-        MT = GameObject.Find("StickestMan").GetComponent<SwimmingScript>();
+        SS = GameObject.Find("StickestMan").GetComponent<SwimmingScript>();
     }
 
     private void Update()
     {
-        if (MT.gameOver || MT.meterCount >= 94)
+        if (SS.gameOver || SS.meterCount >= 94)
         {
             CancelInvoke("SpawningObject");
         }
+
+        //if (SS.LOLBUFF == 1)
+        //{
+        //    CancelInvoke("SpawningObject");
+        //    InvokeRepeating("SpawningObject", 1.0f, 1.0f);
+        //}
+        //else
+        //{
+        //    CancelInvoke("SpawningObject");
+        //    InvokeRepeating("SpawningObject", 0.5f, 0.5f);
+        //}
     }
 
     private void SpawningObject()
     {
         randChances = Random.Range(0, 101);
-        randObs = Random.Range(0, 2);
-        randSpawn = Random.Range(0, 2);
+        randObs = Random.Range(0, 5);
+        randSpawn = Random.Range(0, 1);
         if (randSpawn == 0)
         {
             aboveCounter++;
@@ -46,28 +56,20 @@ public class ObstacleSpawner : MonoBehaviour
         }
         if (aboveCounter < 2)
         {
-            Instantiate(Obstacles[randObs], Spawns[randSpawn].transform.position, Quaternion.identity);
-            if (randSpawn == 0 && randChances >= fishChance)
+            Instantiate(Obstacles[3], Spawns[randSpawn].transform.position, Quaternion.identity);
+            if (randSpawn == 0 && randChances >= bubblesChance)
             {
-                Instantiate(Obstacles[2], Spawns[1].transform.position, Quaternion.identity);
-            }
-            else if (randSpawn == 1 && randChances >= fishChance)
-            {
-                Instantiate(Obstacles[2], Spawns[0].transform.position, Quaternion.identity);
+                Instantiate(Obstacles[4], Spawns[1].transform.position, Quaternion.identity);
             }
         }
         if (aboveCounter >= 2)
         {
             randSpawn = 1;
             aboveCounter = 0;
-            Instantiate(Obstacles[randObs], Spawns[randSpawn].transform.position, Quaternion.identity);
-            if (randSpawn == 0 && randChances >= fishChance)
+            Instantiate(Obstacles[3], Spawns[randSpawn].transform.position, Quaternion.identity);
+            if (randSpawn == 0 && randChances >= bubblesChance)
             {
-                Instantiate(Obstacles[2], Spawns[1].transform.position, Quaternion.identity);
-            }
-            else if (randSpawn == 1 && randChances >= fishChance)
-            {
-                Instantiate(Obstacles[2], Spawns[0].transform.position, Quaternion.identity);
+                Instantiate(Obstacles[4], Spawns[1].transform.position, Quaternion.identity);
             }
         }
     }

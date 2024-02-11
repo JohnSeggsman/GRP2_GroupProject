@@ -7,15 +7,16 @@ using UnityEngine.Sprites;
 
 public class SwimmingScript : MonoBehaviour
 {
-    [SerializeField] private float AIR;
+    [SerializeField] private GameObject mainCam, winCam;
     [SerializeField] private float timer;
-    [SerializeField] private Text meterTxt;
-    [SerializeField] private bool isUnder;
+    [SerializeField] private float currenttimerCount, highesttimerCount;
+    [SerializeField] private GameObject meterBox, timerBox;
+    [SerializeField] private Text meterTxt, timerTxt, highScoreTxt, currentScoreTxt;
     [SerializeField] private BoxCollider2D playerCollider;
     [SerializeField] private GameObject BubbleSprite;
     [SerializeField] private Sprite[] Bubbles;
     [SerializeField] private GameObject backgroundScroll;
-    [SerializeField] private GameObject LoseAnim;
+    [SerializeField] private GameObject LoseAnim, WinAnim;
     [SerializeField] private AudioManager audioSource;
     [SerializeField] private AudioClip[] audioClips;
 
@@ -23,15 +24,18 @@ public class SwimmingScript : MonoBehaviour
     [SerializeField] private GameObject PauseMenu;
 
     [SerializeField] private bool IMMORTALITY;
+    [SerializeField] private GameObject endPoint, transition, transMask;
+    [SerializeField] private Animator animator, endAnimator;
 
-    [SerializeField] private Vector3 oriPosBack, oriPosEnd;
-    private GameObject endPoint;
+    private Vector3 oriPosBack, oriPosEnd;
     private ObstacleSpawner OS;
     private SpriteRenderer SR;
-    private Animator animator;
     public int meterCount;
-
+    public float LOLBUFF;
+    private float AIR;
+    private bool isUnder;
     public bool gameOver;
+    public bool isWon;
     private bool isPaused;
 
     private void Start()
@@ -43,6 +47,9 @@ public class SwimmingScript : MonoBehaviour
         BubbleSprite.SetActive(false);
         audioSource.audioBGM.clip = audioClips[0];
         audioSource.audioBGM.Play();
+        audioSource.audioBGM.loop = true;
+        mainCam.SetActive(true);
+        winCam.SetActive(false);
 
         oriPosBack = new Vector3(3.5f, -1, 0);
         oriPosEnd = new Vector3(18.8f, -2.59f, 0);
@@ -56,8 +63,11 @@ public class SwimmingScript : MonoBehaviour
     private void VariableSetUp()
     {
         isPaused = false;
+        isWon = false;
         isUnder = false;
         gameOver = false;
+        currenttimerCount = 0;
+        LOLBUFF = 1;
         AIR = 100;
         timer = 0;
         transform.position = new Vector3(-5.55f, -0.7f, 0);
@@ -65,11 +75,19 @@ public class SwimmingScript : MonoBehaviour
 
     private void ReferenceSetUp()
     {
+        if (GameObject.Find("AudioManager") == null)
+        {
+            audioSource = GameObject.Find("TempAudioManager").GetComponent<AudioManager>();
+        }
+        else
+        {
+            audioSource = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        }
+
+
         playerCollider = this.GetComponent<BoxCollider2D>();
         SR = this.GetComponent<SpriteRenderer>();
-        animator = this.GetComponent<Animator>();
-        audioSource = GameObject.Find("AudioManager").GetComponent<AudioManager>();
-        OS = GameObject.Find("ObstacleSpawner").GetComponent<ObstacleSpawner>();
+        OS = GameObject.Find("ObstacleManager").GetComponent<ObstacleSpawner>();
         endPoint = GameObject.Find("EndPoint");
     }
 
@@ -87,6 +105,42 @@ public class SwimmingScript : MonoBehaviour
 
     private void Update()
     {
+        if (!gameOver)
+        {
+            if (!isPaused)
+            {
+                InputFunctions();
+                OxygenFunction();
+                MovementFunction();
+                TimerFunction();
+                EndPointFunction();
+            }
+        }
+    }
+
+    private void InputFunctions()
+    {
+        #if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            meterCount += 50;
+        }
+        #endif
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            LOLBUFF = 2.0f;
+            animator.speed = 1.5f;
+            audioSource.audioBGM.pitch = 1.5f;
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            LOLBUFF = 1.0f;
+            animator.speed = 1.0f;
+            audioSource.audioBGM.pitch = 1.0f;
+        }
+
+        #region Pause Menu
         if (Input.GetKeyDown(KeyCode.R) && !isPaused)
         {
             PauseMenu.SetActive(true);
@@ -101,26 +155,20 @@ public class SwimmingScript : MonoBehaviour
             audioSource.audioBGM.Play();
             Time.timeScale = 1;
         }
-
-        if (!gameOver)
-        {
-            if (!isPaused)
-            {
-                OxygenFunction();
-                MovementFunction();
-                TimerFunction();
-                EndPointAnimation();
-            }
-        }
+        #endregion
     }
 
     private void TimerFunction()
     {
         meterTxt.text = meterCount + "M" + " / " + "100M";
 
+        timerTxt.text = currenttimerCount.ToString("00:##.##");
+
+        currenttimerCount += Time.deltaTime;
+
         if (backgroundScroll.transform.position.x > -3.5)
         {
-            backgroundScroll.transform.position -= new Vector3((0.15f * Time.deltaTime), 0, 0);
+            backgroundScroll.transform.position -= new Vector3(((0.15f * LOLBUFF) * Time.deltaTime), 0, 0);
         }
 
         if (meterCount >= 100)
@@ -135,7 +183,14 @@ public class SwimmingScript : MonoBehaviour
             }
             else if (timer >= 1)
             {
-                meterCount += 2;
+                if (LOLBUFF == 1)
+                {
+                    meterCount += 2;
+                }
+                else
+                {
+                    meterCount += 4;
+                }
                 timer = 0;
             }
         }
@@ -203,33 +258,33 @@ public class SwimmingScript : MonoBehaviour
             }
             else if (AIR <= 100)
             {
-                AIR += 10 * Time.deltaTime;
+                AIR += 20 * Time.deltaTime;
             }
         }
     }
 
     private void MovementFunction()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.S))
         {
             SR.sortingOrder = 1;
             animator.SetBool("isDive", true);
             transform.position = new Vector3(transform.position.x, -3, 0);
-            playerCollider.size = new Vector2(1.5f, 3.5f);
+            //playerCollider.size = new Vector2(1.5f, 3.5f);
             BubbleSprite.SetActive(true);
             isUnder = true;
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.S))
         {
             audioSource.audioBGM.clip = audioClips[1];
             audioSource.audioBGM.Play();
         }
-        else if (Input.GetKeyUp(KeyCode.Space))
+        else if (Input.GetKeyUp(KeyCode.S))
         {
             SR.sortingOrder = 0;
             animator.SetBool("isDive", false);
             transform.position = new Vector3(transform.position.x, -0.7f, 0);
-            playerCollider.size = new Vector2(5.3f, 2.6f);
+            //playerCollider.size = new Vector2(5.3f, 2.6f);
             BubbleSprite.SetActive(false);
             audioSource.audioBGM.clip = audioClips[0];
             audioSource.audioBGM.Play();
@@ -237,21 +292,84 @@ public class SwimmingScript : MonoBehaviour
         }
     }
 
-    private void EndPointAnimation()
+    private void EndPointFunction()
     {
-        if (meterCount >= 96)
+        if (endPoint.transform.position.x >= 7.0f)
         {
-            endPoint.transform.position -= new Vector3((5 * Time.deltaTime), 0, 0);
+            if (meterCount >= 96)
+            {
+                endPoint.transform.position -= new Vector3((5 * Time.deltaTime), 0, 0);
+            }
         }
+        else if (endPoint.transform.position.x <= 7.0f)
+        {
+            if (!isWon)
+            {
+                if (highesttimerCount <= 0)
+                {
+                    highesttimerCount = currenttimerCount;
+                    highScoreTxt.text = highesttimerCount.ToString("00:##.##");
+                    currentScoreTxt.text = currenttimerCount.ToString("00:##.##");
+                }
+                else if (highesttimerCount > currenttimerCount)
+                {
+                    highesttimerCount = currenttimerCount;
+                    highScoreTxt.text = highesttimerCount.ToString("00:##.##");
+                    currentScoreTxt.text = currenttimerCount.ToString("00:##.##");
+                }
+                else if (highesttimerCount < currenttimerCount)
+                {
+                    highScoreTxt.text = highesttimerCount.ToString("00:##.##");
+                    currentScoreTxt.text = currenttimerCount.ToString("00:##.##");
+                }
+
+                animator.speed = 1.0f;
+                Time.timeScale = 1.0f;
+                audioSource.audioBGM.pitch = 1.0f;
+                gameOver = true;
+                isWon = true;
+                meterBox.SetActive(false);
+                timerBox.SetActive(false);
+                audioSource.audioBGM.loop = false;
+                audioSource.StopBGM();
+                StartCoroutine(endPointAnimation());
+            }
+            else
+            {
+                Debug.Log("Your mother");
+            }
+        }
+    }
+
+    private IEnumerator endPointAnimation()
+    {
+        endAnimator.SetTrigger("endPlay");
+        yield return new WaitForSeconds(0.75f);
+        endAnimator.SetTrigger("endEnd");
+        mainCam.SetActive(false);
+        winCam.SetActive(true);
+        audioSource.audioBGM.clip = audioClips[3];
+        yield return new WaitForSeconds(0.1f);
+        audioSource.audioBGM.PlayOneShot(audioSource.audioBGM.clip);
+        WinAnim.SetActive(true);
     }
 
     private void OnResume()
     {
-        Debug.Log("Your mother");
+        LOLBUFF = 1.0f;
+        isPaused = false;
+        PauseMenu.SetActive(false);
+        Time.timeScale = 1;
+        audioSource.audioBGM.Play();
     }
 
     private void OnRetry()
     {
+        GameObject destroyObj = GameObject.FindGameObjectWithTag("Obstacle");
+        Destroy(destroyObj);
+        GameObject destroyDude = GameObject.FindGameObjectWithTag("ObstacleDude");
+        Destroy(destroyDude);
+        OS.CancelInvoke("SpawningObject");
         OS.InvokeRepeating("SpawningObject", 1.0f, 1.0f);
         endPoint.transform.position = oriPosEnd;
         backgroundScroll.transform.position = oriPosBack;
@@ -296,6 +414,18 @@ public class SwimmingScript : MonoBehaviour
             gameOver = true;
             transform.position = new Vector3(-5.55f, -1.65f, 0);
             Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.CompareTag("ObstacleDude") && !gameOver && !IMMORTALITY)
+        {
+            LoseAnim.SetActive(true);
+            audioSource.audioBGM.clip = audioClips[1];
+            audioSource.audioBGM.Play();
+            animator.SetBool("isDive", false);
+            animator.SetBool("isDead", true);
+            BubbleSprite.SetActive(false);
+            SR.sortingOrder = 1;
+            gameOver = true;
+            transform.position = new Vector3(-5.55f, -1.65f, 0);
         }
         if (collision.gameObject.CompareTag("Fishes") && !gameOver)
         {

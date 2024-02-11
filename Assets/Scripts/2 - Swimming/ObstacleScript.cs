@@ -6,9 +6,13 @@ public class ObstacleScript : MonoBehaviour
 {
     [SerializeField] private int speed;
     [SerializeField] private Sprite[] fishesSprite;
+    [SerializeField] private SwimmingScript SS;
+
+    private int tempSpeed;
 
     private void Start()
     {
+        SS = GameObject.Find("StickestMan").GetComponent<SwimmingScript>();
         if (this.gameObject.CompareTag("Fishes"))
         {
             if (this.transform.position.y == -0.8f)
@@ -26,7 +30,16 @@ public class ObstacleScript : MonoBehaviour
 
     private void Update()
     {
-        this.transform.position -= new Vector3(speed * Time.deltaTime, 0, 0);
+        if (SS.LOLBUFF == 2)
+        {
+            tempSpeed = speed + 10;
+        }
+        else
+        {
+            tempSpeed = speed;
+        }
+
+        this.transform.position -= new Vector3(tempSpeed * Time.deltaTime, 0, 0);
 
         if (transform.position.x < -11.4f)
         {
