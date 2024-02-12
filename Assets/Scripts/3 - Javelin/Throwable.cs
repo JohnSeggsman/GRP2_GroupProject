@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Throwable : MonoBehaviour
 {
-    public float mashDelay = 0.5f;
+    public float mashDelay;
 
     float mash;
     bool pressed;
@@ -31,7 +31,8 @@ public class Throwable : MonoBehaviour
     public bool toggleOnce = false;
 
     public Animator animator;
-    public Animator animbomb;
+    public Animator playerAnimator;
+    public AudioSource audiosource;
 
     public float armChangeSpeed = 1;
     float maxArmValue = 80f;
@@ -51,39 +52,42 @@ public class Throwable : MonoBehaviour
         cam = Camera.main;
         tl = GetComponent<TrajectoryLine>();
         animator = GetComponent<Animator>();
+        playerAnimator = player.GetComponent<Animator>();
         rb = player.GetComponent<Rigidbody2D>();
         currentArmValue = maxArmValue;
         armIncreasing = false;
         armOn = true;
         mash = mashDelay;
+        audiosource = player.GetComponent<AudioSource>();
         StartCoroutine(UpdateDirection());
     }
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
+        HandleSpearRotation();
+        if (Input.GetKey(KeyCode.A))
         {
-            StopAllCoroutines();
-        }
-        /*
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            if(Input.GetKeyUp(KeyCode.D))
+            if(Input.GetKeyDown(KeyCode.D))
             {
+                StopAllCoroutines();
                 isRun = true;
-                //rb.AddForce(player.transform.right * speed, ForceMode2D.Force);
             }
+            
         }
-        */
         /*
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
         {
-            if(buttonCooler > 0 && buttonCount == 2)
+            if(buttonCooler > 0 && buttonCount == 1)
             {
                 isRun = true;
+                playerAnimator.SetBool("IsRunJavelin", true);
+                rb.velocity = rb.velocity.normalized * speed;
+                speed += Time.deltaTime;
+                rb.AddForce(player.transform.right * speed, ForceMode2D.Impulse);
             }
             else
             {
+                //isRun = false;
                 buttonCooler = 0.5f;
                 buttonCount += 1;
             }
@@ -97,19 +101,7 @@ public class Throwable : MonoBehaviour
         {
             buttonCount = 0;
         }
-        
-        if (!Input.anyKey)
-        {
-            isRun = false;
-        }
         */
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
-        {
-            isRun = true;
-        }
-
-        HandleGunRotation();
-        
 
         if (toggleOnce == false)
         {
@@ -122,39 +114,87 @@ public class Throwable : MonoBehaviour
             }
             
         }
+        
+        
         if (isRun == true)
         {
+            
             mash -= Time.deltaTime;
-            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) && !pressed)
+            if (Input.GetKey(KeyCode.A))
             {
-                rb.velocity = rb.velocity.normalized * speed;
-                speed += Time.deltaTime;
-                rb.AddForce(player.transform.right * speed, ForceMode2D.Impulse);
-                pressed = true;
-                mash = mashDelay;
+                if (Input.GetKeyDown(KeyCode.D) && !pressed)
+                {
+                    audiosource.Play();
+                    playerAnimator.SetBool("IsRunJavelin", true);
+                    //playerAnimator.SetBool("IsIdle", false);
+                    rb.velocity = rb.velocity.normalized * speed;
+                    speed += Time.deltaTime;
+                    rb.AddForce(player.transform.right * speed, ForceMode2D.Impulse);
+                    pressed = true;
+                    mash = mashDelay;
+                }
             }
-            else if (Input.GetKeyUp(KeyCode.A))
+            else if (!Input.GetKeyDown(KeyCode.A) || !Input.GetKeyDown(KeyCode.D))
             {
+                
                 pressed = false;
             }
             if (mash <= 0)
             {
-                isRun = false;
+
+                
+                rb.velocity = Vector2.zero;
+                //isRun = false;
+
                 //rb.velocity = Vector2.zero;
             }
+            if(!Input.anyKey)
+            {
+                isRun = false;
+                
+            }
+            if (buttonCooler > 0 && buttonCount > 1)
+            {
+                
+                isRun = true;
+                playerAnimator.SetBool("IsRunJavelin", true);
+                rb.velocity = rb.velocity.normalized * speed;
+                speed += Time.deltaTime;
+                rb.AddForce(player.transform.right * speed, ForceMode2D.Impulse);
+            }
+            else
+            {
+
+                buttonCooler = 0.5f;
+                buttonCount += 1;
+            }
         }
-        else if (isRun == false)
+        
+        if (isRun == false)
         {
-            speed = 0.5f;
-            //rb.velocity = Vector2.zero;
+            audiosource.Stop();
+            speed = 1f;
+            playerAnimator.SetBool("IsRunJavelin", false);
+            //playerAnimator.SetBool("IsIdle",true);
+
         }
+
+        if (buttonCooler > 0)
+        {
+            buttonCooler -= 1 * Time.deltaTime;
+        }
+        else
+        {
+            buttonCount = 0;
+        }
+
     }
     private void FixedUpdate()
     {
         
     }
 
-    public void HandleGunRotation()
+    public void HandleSpearRotation()
     {
         Vector3 euler = transform.eulerAngles;
         if (euler.z > 180) euler.z -= 360;
@@ -189,4 +229,5 @@ public class Throwable : MonoBehaviour
         yield return null;
 
     }
+    
 }
