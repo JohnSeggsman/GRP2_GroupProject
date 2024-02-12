@@ -7,55 +7,65 @@ using UnityEngine.Sprites;
 
 public class SwimmingScript : MonoBehaviour
 {
-    [SerializeField] private GameObject mainCam, winCam;
-    [SerializeField] private float timer;
-    [SerializeField] private float currenttimerCount, highesttimerCount;
-    [SerializeField] private GameObject meterBox, timerBox;
-    [SerializeField] private Text meterTxt, timerTxt, highScoreTxt, currentScoreTxt;
-    [SerializeField] private BoxCollider2D playerCollider;
+    [Header("Game Object References")]
+
     [SerializeField] private GameObject BubbleSprite;
-    [SerializeField] private Sprite[] Bubbles;
+    [SerializeField] private GameObject mainCam, winCam;
+    [SerializeField] private GameObject meterBox, timerBox;
     [SerializeField] private GameObject backgroundScroll;
     [SerializeField] private GameObject LoseAnim, WinAnim;
-    [SerializeField] private AudioManager audioSource;
-    [SerializeField] private AudioClip[] audioClips;
-
-    [SerializeField] private Button[] buttons; //MainMenuScene
-    [SerializeField] private GameObject PauseMenu;
-
-    [SerializeField] private bool IMMORTALITY;
+    [SerializeField] private GameObject instructionUI;
+    [SerializeField] private GameObject PauseMenu, WTDManual;
     [SerializeField] private GameObject endPoint, transition, transMask;
+
+    [Header("Array References")]
+    [SerializeField] private Sprite[] Bubbles;
+    [SerializeField] private AudioClip[] audioClips;
+    [SerializeField] private Button[] buttons; //MainMenuScene
+
+    [Header("Miscs")]
+    [SerializeField] private BoxCollider2D playerCollider;
+    [SerializeField] private Text meterTxt, timerTxt, highScoreTxt, currentScoreTxt;
     [SerializeField] private Animator animator, endAnimator;
 
+    [Header("Cheats")]
+    [SerializeField] private bool IMMORTALITY;
+    private float currenttimerCount, highesttimerCount;
     private Vector3 oriPosBack, oriPosEnd;
+    private AudioManager audioSource;
     private ObstacleSpawner OS;
     private SpriteRenderer SR;
-    public int meterCount;
-    public float LOLBUFF;
+    private bool isPaused;
+    private float timer;
     private float AIR;
     private bool isUnder;
-    public bool gameOver;
-    public bool isWon;
-    private bool isPaused;
+    [HideInInspector] public int meterCount;
+    [HideInInspector] public float LOLBUFF;
+    [HideInInspector] public bool gameOver;
+    [HideInInspector] public bool isWon;
+    [HideInInspector] public bool isStart;
 
     private void Start()
     {
         ButtonSetUp();
         ReferenceSetUp();
         VariableSetUp();
+        Instructions();
         BubbleSprite.GetComponent<SpriteRenderer>().sprite = Bubbles[1];
         BubbleSprite.SetActive(false);
-        audioSource.audioBGM.clip = audioClips[0];
-        audioSource.audioBGM.Play();
-        audioSource.audioBGM.loop = true;
         mainCam.SetActive(true);
         winCam.SetActive(false);
-
         oriPosBack = new Vector3(3.5f, -1, 0);
         oriPosEnd = new Vector3(18.8f, -2.59f, 0);
-
+        audioSource.audioBGM.Stop();
         backgroundScroll.transform.position = oriPosBack;
         endPoint.transform.position = oriPosEnd;
+    }
+
+    private void Instructions()
+    {
+        instructionUI.SetActive(true);
+        Time.timeScale = 0;
     }
 
     #region StartSetUp
@@ -63,6 +73,7 @@ public class SwimmingScript : MonoBehaviour
     private void VariableSetUp()
     {
         isPaused = false;
+        isStart = false;
         isWon = false;
         isUnder = false;
         gameOver = false;
@@ -105,7 +116,18 @@ public class SwimmingScript : MonoBehaviour
 
     private void Update()
     {
-        if (!gameOver)
+        if (Input.GetKeyDown(KeyCode.Return) && !isStart)
+        {
+            Time.timeScale = 1;
+            isStart = true;
+            instructionUI.SetActive(false);
+            OS.InvokeRepeating("SpawningObject", 1.0f, 1.0f);
+            audioSource.audioBGM.clip = audioClips[0];
+            audioSource.audioBGM.Play();
+            audioSource.audioBGM.loop = true;
+        }
+
+        if (!gameOver && isStart)
         {
             if (!isPaused)
             {
@@ -120,7 +142,8 @@ public class SwimmingScript : MonoBehaviour
 
     private void InputFunctions()
     {
-        #if UNITY_EDITOR
+
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.G))
         {
             meterCount += 50;
@@ -141,14 +164,14 @@ public class SwimmingScript : MonoBehaviour
         }
 
         #region Pause Menu
-        if (Input.GetKeyDown(KeyCode.R) && !isPaused)
+        if (Input.GetKeyDown(KeyCode.Escape) && !isPaused)
         {
             PauseMenu.SetActive(true);
             isPaused = true;
             audioSource.audioBGM.Pause();
             Time.timeScale = 0;
         }
-        else if (Input.GetKeyDown(KeyCode.R) && isPaused)
+        if (Input.GetKeyDown(KeyCode.Escape) && isPaused)
         {
             PauseMenu.SetActive(false);
             isPaused = false;
@@ -359,6 +382,7 @@ public class SwimmingScript : MonoBehaviour
         LOLBUFF = 1.0f;
         isPaused = false;
         PauseMenu.SetActive(false);
+        WTDManual.SetActive(false);
         Time.timeScale = 1;
         audioSource.audioBGM.Play();
     }
@@ -366,14 +390,17 @@ public class SwimmingScript : MonoBehaviour
     private void OnRetry()
     {
         GameObject destroyObj = GameObject.FindGameObjectWithTag("Obstacle");
-        Destroy(destroyObj);
         GameObject destroyDude = GameObject.FindGameObjectWithTag("ObstacleDude");
+        Destroy(destroyObj);
         Destroy(destroyDude);
         OS.CancelInvoke("SpawningObject");
         OS.InvokeRepeating("SpawningObject", 1.0f, 1.0f);
         endPoint.transform.position = oriPosEnd;
         backgroundScroll.transform.position = oriPosBack;
         PauseMenu.SetActive(false);
+        WTDManual.SetActive(false);
+        LoseAnim.SetActive(false);
+        animator.SetBool("isDead", false);
         Time.timeScale = 1;
         AIR = 100;
         meterCount = 0;
@@ -383,13 +410,11 @@ public class SwimmingScript : MonoBehaviour
         SR.sortingOrder = 0;
         audioSource.audioBGM.clip = audioClips[0];
         audioSource.audioBGM.Play();
-        animator.SetBool("isDead", false);
-        LoseAnim.SetActive(false);
     }
 
     private void OnOption()
     {
-        Debug.Log("Your father");
+        WTDManual.SetActive(true);
     }
 
     private void OnMainMenu()

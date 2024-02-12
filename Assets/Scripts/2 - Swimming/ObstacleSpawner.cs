@@ -18,15 +18,17 @@ public class ObstacleSpawner : MonoBehaviour
     private void Start()
     {
         bubblesChance = 95;
-        InvokeRepeating("SpawningObject", 1.0f, 1.0f);
         SS = GameObject.Find("StickestMan").GetComponent<SwimmingScript>();
     }
 
     private void Update()
     {
-        if (SS.gameOver || SS.meterCount >= 94)
+        if (SS.gameOver)
         {
-            CancelInvoke("SpawningObject");
+            if (SS.meterCount >= 94)
+            {
+                CancelInvoke("SpawningObject");
+            }
         }
 
         //if (SS.LOLBUFF == 1)
@@ -44,7 +46,7 @@ public class ObstacleSpawner : MonoBehaviour
     private void SpawningObject()
     {
         randChances = Random.Range(0, 101);
-        randObs = Random.Range(0, 5);
+        randObs = Random.Range(0, 4);
         randSpawn = Random.Range(0, 1);
         if (randSpawn == 0)
         {
@@ -56,7 +58,7 @@ public class ObstacleSpawner : MonoBehaviour
         }
         if (aboveCounter < 2)
         {
-            Instantiate(Obstacles[3], Spawns[randSpawn].transform.position, Quaternion.identity);
+            Instantiate(Obstacles[randObs], Spawns[randSpawn].transform.position, Quaternion.identity);
             if (randSpawn == 0 && randChances >= bubblesChance)
             {
                 Instantiate(Obstacles[4], Spawns[1].transform.position, Quaternion.identity);
@@ -66,7 +68,7 @@ public class ObstacleSpawner : MonoBehaviour
         {
             randSpawn = 1;
             aboveCounter = 0;
-            Instantiate(Obstacles[3], Spawns[randSpawn].transform.position, Quaternion.identity);
+            Instantiate(Obstacles[randObs], Spawns[randSpawn].transform.position, Quaternion.identity);
             if (randSpawn == 0 && randChances >= bubblesChance)
             {
                 Instantiate(Obstacles[4], Spawns[1].transform.position, Quaternion.identity);

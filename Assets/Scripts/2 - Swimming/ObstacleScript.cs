@@ -5,7 +5,6 @@ using UnityEngine;
 public class ObstacleScript : MonoBehaviour
 {
     [SerializeField] private int speed;
-    [SerializeField] private Sprite[] fishesSprite;
     [SerializeField] private SwimmingScript SS;
 
     private int tempSpeed;
@@ -13,18 +12,16 @@ public class ObstacleScript : MonoBehaviour
     private void Start()
     {
         SS = GameObject.Find("StickestMan").GetComponent<SwimmingScript>();
-        if (this.gameObject.CompareTag("Fishes"))
+
+        if (this.transform.position.y > -1)
         {
-            if (this.transform.position.y == -0.8f)
-            {
-                this.GetComponent<BoxCollider2D>().size = new Vector2(10.4f, 6.9f);
-                this.GetComponent<SpriteRenderer>().sprite = fishesSprite[1];
-            }
-            else if (this.transform.position.y == -3.35f)
-            {
-                this.GetComponent<BoxCollider2D>().size = new Vector2(5.0f, 2.9f);
-                this.GetComponent<SpriteRenderer>().sprite = fishesSprite[0];
-            }
+            print("Test");
+            this.GetComponent<SpriteRenderer>().sortingOrder = 0;
+        }
+        if (this.transform.position.y < -1)
+        {
+            this.GetComponent<SpriteRenderer>().sortingOrder = 1;
+            this.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0.5f);
         }
     }
 
