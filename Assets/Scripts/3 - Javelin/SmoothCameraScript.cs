@@ -16,6 +16,8 @@ public class SmoothCameraScript : MonoBehaviour
     public Image leftKey;
     public Image rightKey;
     public Image spaceKey;
+    public GameObject pauseMenu;
+    public bool togglePause;
     private void Awake()
     {
 
@@ -29,7 +31,7 @@ public class SmoothCameraScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        distanceText.text = javelinscript.distanceTraveled.ToString("F2") + "M";
+        distanceText.text = javelinscript.distanceTraveled.ToString("F2") + " M";
         if(throwable.toggleOnce == true)
         {
             //target = throwable.weaponInst.transform;
@@ -44,7 +46,18 @@ public class SmoothCameraScript : MonoBehaviour
             transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
         }
 
-        
+        if(Input.GetKeyDown(KeyCode.Escape) && togglePause == false)
+        {
+            Time.timeScale = 0;
+            pauseMenu.SetActive(true);
+            togglePause = true;
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape) && togglePause == true)
+        {
+            Time.timeScale = 1;
+            pauseMenu.SetActive(false);
+            togglePause = false;
+        }
 
     }
     private void FixedUpdate()

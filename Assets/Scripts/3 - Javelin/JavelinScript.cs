@@ -29,15 +29,7 @@ public class JavelinScript : MonoBehaviour
     void Update()
     {
         
-        HandleSpearRotation();
-        if (rb.velocity.y < -0.00001f)
-        {
-            rb.AddForceAtPosition(10 * Time.deltaTime * -transform.up, head.position);
-        }
-        if (rb.velocity.y < -0.001f && transform.position.y <= 15)
-        {
-            rb.AddForceAtPosition(40 * Time.deltaTime * -transform.up, head.position);
-        }
+        
     }
     public void SetStraightVelocity()
     {
@@ -49,8 +41,16 @@ public class JavelinScript : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        
-        //rb.AddForceAtPosition(2 * Time.deltaTime * -transform.up, head.position);
+        rb.AddForceAtPosition(3 * Time.deltaTime * -transform.up, head.position);
+        if (rb.velocity.y < -0.001f && transform.position.y <= 3 && distanceTraveled > 0)
+        {
+            rb.AddForceAtPosition(70 * Time.deltaTime * -transform.up, head.position);
+        }
+        HandleSpearRotation();
+        if (rb.velocity.y < -0.00001f)
+        {
+
+        }
         if (throwable.toggleOnce == true && toggleOnce == false)
         {
             
@@ -59,17 +59,41 @@ public class JavelinScript : MonoBehaviour
         }
         if(throwable.toggleOnce == true)
         {
-            distanceTraveled += Vector3.Distance(transform.position, lastPosition);
-            lastPosition = transform.position;
+            //distanceTraveled += Vector3.Distance(transform.position, flag.transform.position);
+            //distanceTraveled += Vector3.Distance(transform.position, lastPosition);
+            distanceTraveled = transform.position.x;
+            if (distanceTraveled <= 0)
+            {
+                distanceTraveled = 0;
+                
+                //Fail
+            }
+            else
+            {
+
+            }
+
+            if(rb.simulated == false && distanceTraveled == 0)
+            {
+                Debug.Log("Fail");
+            }
+            
         }
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Ground"))
+        
+        if (distanceTraveled > 0)
         {
-            rb.simulated = false;
+            if (collision.CompareTag("Ground"))
+            {
+                rb.simulated = false;
+            }
         }
+        
     }
+
     public void HandleSpearRotation()
     {
         Vector3 euler = transform.eulerAngles;

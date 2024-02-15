@@ -33,6 +33,7 @@ public class Throwable : MonoBehaviour
     public Animator animator;
     public Animator playerAnimator;
     public AudioSource audiosource;
+    public AudioSource audiosourcethrow;
 
     public float armChangeSpeed = 1;
     float maxArmValue = 80f;
@@ -59,6 +60,7 @@ public class Throwable : MonoBehaviour
         armOn = true;
         mash = mashDelay;
         audiosource = player.GetComponent<AudioSource>();
+        audiosourcethrow = GetComponent<AudioSource>();
         StartCoroutine(UpdateDirection());
     }
     // Update is called once per frame
@@ -74,40 +76,14 @@ public class Throwable : MonoBehaviour
             }
             
         }
-        /*
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
-        {
-            if(buttonCooler > 0 && buttonCount == 1)
-            {
-                isRun = true;
-                playerAnimator.SetBool("IsRunJavelin", true);
-                rb.velocity = rb.velocity.normalized * speed;
-                speed += Time.deltaTime;
-                rb.AddForce(player.transform.right * speed, ForceMode2D.Impulse);
-            }
-            else
-            {
-                //isRun = false;
-                buttonCooler = 0.5f;
-                buttonCount += 1;
-            }
-        }
-
-        if (buttonCooler > 0)
-        {
-            buttonCooler -= 1 * Time.deltaTime;
-        }
-        else
-        {
-            buttonCount = 0;
-        }
-        */
 
         if (toggleOnce == false)
         {
             
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                audiosource.Stop();
+                audiosourcethrow.Play();
                 GetComponent<Animator>().enabled = true;
                 StopAllCoroutines();
                 toggleOnce = true;
