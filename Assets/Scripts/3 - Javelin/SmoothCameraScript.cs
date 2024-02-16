@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SmoothCameraScript : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class SmoothCameraScript : MonoBehaviour
     public Image spaceKey;
     public GameObject pauseMenu;
     public bool togglePause;
+    public Text newScoreText;
+    public Text oldScoreText;
+    public Text titleText;
+    public Text birdText;
     private void Awake()
     {
 
@@ -25,7 +30,8 @@ public class SmoothCameraScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        Time.timeScale = 1;
+        
     }
 
     // Update is called once per frame
@@ -88,5 +94,14 @@ public class SmoothCameraScript : MonoBehaviour
         {
             spaceKey.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
         }
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }

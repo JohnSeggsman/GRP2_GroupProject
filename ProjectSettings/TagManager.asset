@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Ground
   - RedFlag
+  - Back
+  - Bird
+  - Javelin
   layers:
   - Default
   - TransparentFX

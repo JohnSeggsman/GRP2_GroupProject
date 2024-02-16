@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class LoseScript : MonoBehaviour
 {
     public Throwable throwable;
+    public JavelinScript javelinscript;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,13 +22,19 @@ public class LoseScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && throwable.toggleOnce == false)
         {
-            Debug.Log("Lose");
-            //Lose
-            //SceneManager.LoadScene("Javelin");
+            StartCoroutine(nameof(LoseScene));
+            //audio.PlayClipAtPoint(sfx.soundTest, Camera.main.transform.position, 1.0); play sound when lose
+            
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    public IEnumerator LoseScene()
     {
-        
+        throwable.audiosource.Stop();
+        javelinscript.bgm.SetActive(false);
+        javelinscript.loseSound.Play();
+        javelinscript.loseCanvas.SetActive(true);
+        Time.timeScale = 0;
+        yield return new WaitForSeconds(3f);
+
     }
 }

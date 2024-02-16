@@ -85,6 +85,7 @@ public class Throwable : MonoBehaviour
                 audiosource.Stop();
                 audiosourcethrow.Play();
                 GetComponent<Animator>().enabled = true;
+                playerAnimator.SetBool("IsIdle", true);
                 StopAllCoroutines();
                 toggleOnce = true;
             }
@@ -92,7 +93,7 @@ public class Throwable : MonoBehaviour
         }
         
         
-        if (isRun == true)
+        if (isRun == true && toggleOnce == false)
         {
             
             mash -= Time.deltaTime;
