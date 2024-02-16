@@ -15,7 +15,6 @@ public class ObstacleScript : MonoBehaviour
 
         if (this.transform.position.y > -1)
         {
-            print("Test");
             this.GetComponent<SpriteRenderer>().sortingOrder = 0;
         }
         if (this.transform.position.y < -1)
@@ -40,6 +39,7 @@ public class ObstacleScript : MonoBehaviour
 
         if (transform.position.x < -11.4f)
         {
+            SS.objectAvoided++;
             Destroy(gameObject);
         }
     }

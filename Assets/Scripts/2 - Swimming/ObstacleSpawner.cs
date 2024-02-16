@@ -13,7 +13,7 @@ public class ObstacleSpawner : MonoBehaviour
     private int randObs;
     private int randSpawn;
 
-    private int aboveCounter;
+    [SerializeField] private int aboveCounter;
 
     private void Start()
     {
@@ -30,24 +30,13 @@ public class ObstacleSpawner : MonoBehaviour
                 CancelInvoke("SpawningObject");
             }
         }
-
-        //if (SS.LOLBUFF == 1)
-        //{
-        //    CancelInvoke("SpawningObject");
-        //    InvokeRepeating("SpawningObject", 1.0f, 1.0f);
-        //}
-        //else
-        //{
-        //    CancelInvoke("SpawningObject");
-        //    InvokeRepeating("SpawningObject", 0.5f, 0.5f);
-        //}
     }
 
     private void SpawningObject()
     {
         randChances = Random.Range(0, 101);
         randObs = Random.Range(0, 4);
-        randSpawn = Random.Range(0, 1);
+        randSpawn = Random.Range(0, 2);
         if (randSpawn == 0)
         {
             aboveCounter++;
@@ -66,12 +55,11 @@ public class ObstacleSpawner : MonoBehaviour
         }
         if (aboveCounter >= 2)
         {
-            randSpawn = 1;
             aboveCounter = 0;
-            Instantiate(Obstacles[randObs], Spawns[randSpawn].transform.position, Quaternion.identity);
+            Instantiate(Obstacles[randObs], Spawns[1].transform.position, Quaternion.identity);
             if (randSpawn == 0 && randChances >= bubblesChance)
             {
-                Instantiate(Obstacles[4], Spawns[1].transform.position, Quaternion.identity);
+                Instantiate(Obstacles[4], Spawns[0].transform.position, Quaternion.identity);
             }
         }
     }
