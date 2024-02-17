@@ -130,7 +130,7 @@ public class SwimmingScript : MonoBehaviour
         buttons[1].onClick.AddListener(OnMainMenu);
         buttons[2].onClick.AddListener(OnResume);
         buttons[3].onClick.AddListener(OnRetry);
-        buttons[4].onClick.AddListener(OnOption);
+        buttons[4].onClick.AddListener(OnWTD);
         buttons[5].onClick.AddListener(OnMainMenu);
         buttons[6].onClick.AddListener(OnRetry);
         buttons[7].onClick.AddListener(OnMainMenu);
@@ -546,9 +546,10 @@ public class SwimmingScript : MonoBehaviour
     {
         endAnimator.SetTrigger("endPlay");
         yield return new WaitForSeconds(0.75f);
-        endAnimator.SetTrigger("endEnd");
         mainCam.SetActive(false);
         winCam.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        endAnimator.SetTrigger("endEnd");
         audioSource.audioBGM.clip = audioClips[3];
         yield return new WaitForSeconds(0.1f);
         audioSource.audioBGM.PlayOneShot(audioSource.audioBGM.clip);
@@ -584,6 +585,7 @@ public class SwimmingScript : MonoBehaviour
         WinAnim.SetActive(false);
         LoseAnim.SetActive(false);
         winCam.SetActive(false);
+        BubbleSprite.SetActive(false);
         mainCam.SetActive(true);
         animator.SetBool("isDead", false);
         animator.SetBool("isDive", false);
@@ -607,7 +609,7 @@ public class SwimmingScript : MonoBehaviour
         audioSource.audioBGM.Play();
     }
 
-    private void OnOption()
+    private void OnWTD()
     {
         WTDManual.SetActive(true);
     }
