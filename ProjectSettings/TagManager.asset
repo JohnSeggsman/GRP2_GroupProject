@@ -4,6 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Obstacle
+  - Fishes
+  - ObstacleDude
   - Ground
   - RedFlag
   - Back
