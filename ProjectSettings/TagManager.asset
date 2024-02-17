@@ -7,6 +7,11 @@ TagManager:
   - Obstacle
   - Fishes
   - ObstacleDude
+  - Ground
+  - RedFlag
+  - Back
+  - Bird
+  - Javelin
   layers:
   - Default
   - TransparentFX
