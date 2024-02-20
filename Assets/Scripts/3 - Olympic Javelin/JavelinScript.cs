@@ -60,6 +60,7 @@ public class JavelinScript : MonoBehaviour
         }
         if (rb.velocity.x <= 1f && rb.velocity.y < -0.001f && distanceTraveled > 0)
         {
+            HandleSpearRotation();
             rb.AddForceAtPosition(70 * Time.deltaTime * -transform.up, head.position);
         }
         //HandleSpearRotation();
@@ -77,8 +78,10 @@ public class JavelinScript : MonoBehaviour
             if (distanceTraveled <= 0)
             {
                 distanceTraveled = 0;
-                
-                //Fail
+                if (rb.velocity.x <= 1f)
+                {
+                    StartCoroutine(nameof(LoseScene));
+                }
             }
             else
             {

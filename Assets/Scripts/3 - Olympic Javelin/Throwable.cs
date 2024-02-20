@@ -41,7 +41,15 @@ public class Throwable : MonoBehaviour
     bool armIncreasing;
     public bool armOn;
     Vector2 velocity = Vector2.zero;
-    bool isRun = false;
+
+    private bool pressedA;
+    private bool pressedD;
+    private bool isMoving;
+    private bool isRunning;
+    private bool isRunning2;
+    private bool pressedBoth = false;
+
+    [SerializeField] private float movingCount;
 
     private void Awake()
     {
@@ -67,6 +75,7 @@ public class Throwable : MonoBehaviour
     void Update()
     {
         HandleSpearRotation();
+        /*
         if (Input.GetKey(KeyCode.A))
         {
             if(Input.GetKeyDown(KeyCode.D))
@@ -77,20 +86,7 @@ public class Throwable : MonoBehaviour
             
         }
 
-        if (toggleOnce == false)
-        {
-            
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                audiosource.Stop();
-                audiosourcethrow.Play();
-                GetComponent<Animator>().enabled = true;
-                playerAnimator.SetBool("IsIdle", true);
-                StopAllCoroutines();
-                toggleOnce = true;
-            }
-            
-        }
+        
         
         
         if (isRun == true && toggleOnce == false)
@@ -164,7 +160,106 @@ public class Throwable : MonoBehaviour
         {
             buttonCount = 0;
         }
+        */
 
+        if (Input.GetKeyDown(KeyCode.A) && !pressedA && pressedBoth == false)
+        {
+            StopAllCoroutines();
+            pressedA = true;
+            pressedD = false;
+            isMoving = true;
+            isRunning = true;
+            if (movingCount > 0.000001f && movingCount < 1f)
+            {
+                movingCount = 0.0f;
+            }
+            else if (movingCount < 0.000001f)
+            {
+                movingCount = 0.0f;
+
+            }
+            else if (movingCount > 1f)
+            {
+                movingCount = 0.0f;
+
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.D) && !pressedD && pressedBoth == false)
+        {
+            StopAllCoroutines();
+            pressedA = false;
+            pressedD = true;
+            isMoving = true;
+            isRunning = true;
+            if (movingCount > 0.000001f && movingCount < 1f)
+            {
+                movingCount = 0.0f;
+
+            }
+            else if (movingCount < 0.000001f)
+            {
+                movingCount = 0.0f;
+
+            }
+            else if (movingCount > 1f)
+            {
+                movingCount = 0.0f;
+
+            }
+        }
+
+        if (isRunning)
+        {
+            if (!isRunning2)
+            {
+                audiosource.Play();
+                isRunning = false;
+                isRunning2 = true;
+            }
+        }
+
+        if (isMoving)
+        {
+            rb.velocity = rb.velocity.normalized * speed;
+            speed += Time.deltaTime;
+            rb.AddForce(player.transform.right * speed, ForceMode2D.Impulse);
+            playerAnimator.SetBool("IsRunJavelin", true);
+            if (movingCount < 0.2f)
+            {
+                movingCount += Time.deltaTime;
+            }
+            else if (movingCount >= 0.2f)
+            {
+                isMoving = false;
+            }
+        }
+        if (!isMoving)
+        {
+            isRunning = false;
+            isRunning2 = false;
+            audiosource.Stop();
+            speed = 1f;
+            playerAnimator.SetBool("IsRunJavelin", false);
+        }
+        if (!Input.anyKey)
+        {
+            isMoving = false;
+
+        }
+        if (toggleOnce == false)
+        {
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                audiosource.Stop();
+                audiosourcethrow.Play();
+                GetComponent<Animator>().enabled = true;
+                playerAnimator.SetBool("IsIdle", true);
+                StopAllCoroutines();
+                toggleOnce = true;
+            }
+
+        }
     }
     private void FixedUpdate()
     {
