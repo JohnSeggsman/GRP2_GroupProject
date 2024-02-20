@@ -7,7 +7,7 @@ public class BikeMovementScript : MonoBehaviour
 {
     public SmoothCameraBMX smoothcameraBMX;
 
-    [SerializeField]private Rigidbody2D frontWheel;
+    [SerializeField] private Rigidbody2D frontWheel;
     [SerializeField] private Rigidbody2D backWheel;
     [SerializeField] private Rigidbody2D carRb;
 
@@ -35,7 +35,12 @@ public class BikeMovementScript : MonoBehaviour
     public GameObject BGMObject;
 
     public bool winGame;
-    
+
+    public Text oldScoreText;
+    public Text newScoreText;
+    public float previousScore;
+    public float newScore;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -125,6 +130,7 @@ public class BikeMovementScript : MonoBehaviour
         if(winGame == true)
         {
             StartCoroutine(nameof(WinScene));
+            winGame = false;
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
@@ -160,6 +166,19 @@ public class BikeMovementScript : MonoBehaviour
     }
     public IEnumerator WinScene()
     {
+        newScore = smoothcameraBMX.timerStuff;
+        if (smoothcameraBMX.timerStuff < PlayerPrefs.GetFloat("OldRecordCycling", previousScore))
+        {
+            previousScore = smoothcameraBMX.timerStuff;
+            PlayerPrefs.SetFloat("OldRecordCycling", previousScore);
+
+            Debug.Log("Saved Score");
+
+        }
+        oldScoreText.text = "PREVIOUS RECORD: " + PlayerPrefs.GetFloat("OldRecordCycling").ToString("F2") + "S";
+        newScoreText.text = "LATEST RECORD: " + smoothcameraBMX.timerStuff.ToString("F2") + "S";
+
+
         BGM.gameObject.SetActive(false);
         winSound.Play();
         winPanel.SetActive(true);
