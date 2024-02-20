@@ -615,7 +615,7 @@ MonoBehaviour:
   winPanel: {fileID: 112467121}
   bikeSound: {fileID: 0}
   loseSound: {fileID: 396872597}
-  winSound: {fileID: 0}
+  winSound: {fileID: 1498360364}
   BGM: {fileID: 104052357}
   BGMObject: {fileID: 104052356}
   winGame: 0
