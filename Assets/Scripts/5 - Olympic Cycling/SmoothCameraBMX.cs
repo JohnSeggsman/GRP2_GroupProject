@@ -96,8 +96,8 @@ public class SmoothCameraBMX : MonoBehaviour
     public void MainMenu()
     {
         Time.timeScale = 1;
-        //AudioManager temp = GameObject.Find("AudioManager").GetComponent<AudioManager>();
-        //temp.PlayBGM(0);
+        AudioManager temp = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        temp.PlayBGM(0);
         SceneManager.LoadScene(0);
     }
 }
