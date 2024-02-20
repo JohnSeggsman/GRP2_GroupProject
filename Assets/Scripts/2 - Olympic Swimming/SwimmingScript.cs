@@ -185,7 +185,6 @@ public class SwimmingScript : MonoBehaviour
             if (movingCount > 0.25f && movingCount < 0.45f)
             {
                 movingCount = 0.0f;
-                Debug.Log("Speed up");
                 LOLBUFF = 1.5f;
             }
             else if (movingCount < 0.25f)
@@ -208,7 +207,6 @@ public class SwimmingScript : MonoBehaviour
             if (movingCount > 0.25f && movingCount < 0.45f)
             {
                 movingCount = 0.0f;
-                Debug.Log("Speed up");
                 LOLBUFF = 1.5f;
             }
             else if (movingCount < 0.25f)

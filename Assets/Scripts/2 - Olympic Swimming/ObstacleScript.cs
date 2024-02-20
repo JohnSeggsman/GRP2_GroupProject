@@ -12,7 +12,7 @@ public class ObstacleScript : MonoBehaviour
     private void Start()
     {
         SS = GameObject.Find("StickestMan").GetComponent<SwimmingScript>();
-
+        speed = 10;
         if (this.transform.position.y > -1)
         {
             this.GetComponent<SpriteRenderer>().sortingOrder = 0;
