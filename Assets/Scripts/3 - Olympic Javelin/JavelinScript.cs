@@ -168,7 +168,7 @@ public class JavelinScript : MonoBehaviour
         }
         else if (distanceTraveled > 130)
         {
-            smoothcamscript.titleText.text = "SUPERCALIFRAGILISTICEXPIALIDOCIOUS! \nNEW WORLD RECORD!";
+            smoothcamscript.titleText.text = "CONGRATULATIONS! \nNEW WORLD RECORD!";
         }
         smoothcamscript.oldScoreText.text = "PREVIOUS RECORD: " + PlayerPrefs.GetFloat("OldRecord").ToString("F2");
         smoothcamscript.newScoreText.text = "LATEST RECORD: " + distanceTraveled.ToString("F2");
