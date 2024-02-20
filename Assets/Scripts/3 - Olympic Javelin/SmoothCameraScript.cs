@@ -103,7 +103,8 @@ public class SmoothCameraScript : MonoBehaviour
     public void MainMenu()
     {
         Time.timeScale = 1;
-        AudioManager.Instance.PlayBGM(0);
+        AudioManager temp = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        temp.PlayBGM(0);
         SceneManager.LoadScene(0);
     }
 }

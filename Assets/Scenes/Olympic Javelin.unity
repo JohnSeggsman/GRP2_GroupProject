@@ -214,7 +214,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 32400696}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9b89d65189769d4c8562bd7fc8dd3ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 7263268c6bd860b499dfef1d5c42a946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   smoothTime: 0
@@ -243,8 +243,8 @@ GameObject:
   - component: {fileID: 41210255}
   - component: {fileID: 41210254}
   - component: {fileID: 41210256}
-  - component: {fileID: 41210257}
   - component: {fileID: 41210258}
+  - component: {fileID: 41210257}
   m_Layer: 0
   m_Name: stickArm
   m_TagString: Untagged
@@ -291,15 +291,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 29bb874a8a148934e8405b5963c64efa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c9341efc7900a884e8e3a6b7538194d4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.74, y: 0.83}
+  m_Size: {x: 1.65, y: 2.73}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &41210255
@@ -329,7 +329,7 @@ Animator:
   m_GameObject: {fileID: 41210253}
   m_Enabled: 0
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ead3abec24d75f4bbb32c3b2dd6f073, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9494845df6b78e54688d1eb858cab079, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -347,25 +347,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 41210253}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd75cc9d91d56454e8a141311a164e3a, type: 3}
+  m_Script: {fileID: 11500000, guid: 0641ec6eb7252e849ac863c461bc97e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mashDelay: 1
-  power: 0.1
-  speed: 1
+  mashDelay: 0
+  power: 0
+  speed: 0
   minPower: {x: 0, y: 0}
   maxPower: {x: 0, y: 0}
   tl: {fileID: 0}
   rb: {fileID: 1151866903}
   weapon: {fileID: 568133693}
-  weaponInst: {fileID: 0}
+  weaponInst: {fileID: 1257573554}
   player: {fileID: 1151866902}
-  weaponSpawnPoint: {fileID: 0}
+  weaponSpawnPoint: {fileID: 568133694}
   toggleOnce: 0
-  animator: {fileID: 0}
-  playerAnimator: {fileID: 0}
-  audiosource: {fileID: 0}
-  audiosourcethrow: {fileID: 0}
+  animator: {fileID: 41210256}
+  playerAnimator: {fileID: 1151866907}
+  audiosource: {fileID: 1151866908}
+  audiosourcethrow: {fileID: 41210258}
   armChangeSpeed: 1
   currentArmValue: 0
   armOn: 0
@@ -379,7 +379,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f890745c887fc1e48afdca65d3354c3c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 258a9e88b7315944ea55803c59c3dc2a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1623,7 +1623,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8b9cb693c78e6e64388a530f8f50b57d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b3a234030546d7848bba70b80843f67d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1697,7 +1697,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 988a7fe75c2c5b9459d4f953a1f5c289, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 604f27af66323fd45899aa87b075b7ab, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2090,7 +2090,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d11e94af4fab4084db7ab69154f9aa60, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bb4c6bf0ea925f241a8e4791da43c383, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2098,7 +2098,7 @@ SpriteRenderer:
   m_Size: {x: 9.73, y: 0.49}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &568133696
@@ -2157,20 +2157,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 568133693}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e9facbbe8ee4f94c85e4add80b27c5f, type: 3}
+  m_Script: {fileID: 11500000, guid: f5d0c36b080da2540b3e28725aba6eb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lastPosition: {x: 0, y: 0, z: 0}
   distanceTraveled: 0
   throwable: {fileID: 41210257}
-  audiosource: {fileID: 0}
+  audiosource: {fileID: 568133699}
   head: {fileID: 909154142}
   flag: {fileID: 1344976162}
   loseCanvas: {fileID: 1065413162}
   winCanvas: {fileID: 229242965}
   smoothcamscript: {fileID: 32400700}
-  loseSound: {fileID: 611907080}
-  winSound: {fileID: 1344976165}
+  loseSound: {fileID: 1344976165}
+  winSound: {fileID: 568133699}
   bgm: {fileID: 1279567451}
   birdScore: 0
   previousScore: 0
@@ -2185,7 +2185,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ab6cd1dc5ad00e14b928931ac043cadd, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 01be6e909815c3a4aa7c71a6e055b469, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2388,7 +2388,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 611907074}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98f776e3a9633044cb7b80a54912e1af, type: 3}
+  m_Script: {fileID: 11500000, guid: d8577de0cd00947479d3d8c8bd93993f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   throwable: {fileID: 41210257}
@@ -2403,7 +2403,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1d889fb2f972a9b4288d202c89c534ac, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 400e63a9b680ea84faea3fefc13bc60b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2697,7 +2697,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -13
-  m_Sprite: {fileID: 21300000, guid: 155d23129f18b5e4ba2422f89f32e2b8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 80d6a4a77c1f3184aa31b4f4bbf32626, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2705,7 +2705,7 @@ SpriteRenderer:
   m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &855747089
@@ -3001,7 +3001,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b679145dc4c75b344a0c6bc33e1f412c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 23397c3bed411f444bec00a7c7d64f21, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3009,7 +3009,7 @@ SpriteRenderer:
   m_Size: {x: 1.64, y: 0.49}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &909154144
@@ -3078,12 +3078,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 950758073}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a88b6826910e0b40b06a219359b1c8f, type: 3}
+  m_Script: {fileID: 11500000, guid: 710c587d50a60474fbf77cffba6eb0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnObject: {fileID: 3040502895367155489, guid: a39a65380b9353649a2039d0b65f788e,
+  SpawnObject: {fileID: 3040502895367155489, guid: fccf857aa0b443f4d936e5552c32e012,
     type: 3}
-  random1: 1
+  random1: 0
 --- !u!1 &954023581
 GameObject:
   m_ObjectHideFlags: 0
@@ -3752,7 +3752,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c9eb8fd8ca72345ad3939c50e82617, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 54b9caf1ee1cec84c8d431df9c1416f0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3929,7 +3929,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 918a546f461d67247a0e1d5b7671743e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e23c1d041016f5e41a6ff50f0f82ee02, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3937,7 +3937,7 @@ SpriteRenderer:
   m_Size: {x: 0.84, y: 3.22}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1151866905
@@ -3991,7 +3991,7 @@ Animator:
   m_GameObject: {fileID: 1151866902}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 41431e9a806476f43be603aefb14b588, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9a77129b334ef8447af196a6408bea19, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4010,7 +4010,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ec0bad0272a1ac54e9d4bd75b7ca12a8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 57a4d2460c7c3a94ca8a8ec95a9eb83f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -4317,7 +4317,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0474a3a6c36027447af2204ba7b26bfb, type: 2}
+  - {fileID: 2100000, guid: 3ec975b285f8f7f47945dfc160a28cbb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4482,7 +4482,6 @@ GameObject:
   - component: {fileID: 1257573555}
   - component: {fileID: 1257573558}
   - component: {fileID: 1257573557}
-  - component: {fileID: 1257573556}
   - component: {fileID: 1257573559}
   m_Layer: 0
   m_Name: JavelinHead2
@@ -4506,33 +4505,6 @@ Transform:
   m_Father: {fileID: 41210255}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 30}
---- !u!114 &1257573556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1257573554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e9facbbe8ee4f94c85e4add80b27c5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lastPosition: {x: 0, y: 0, z: 0}
-  distanceTraveled: 0
-  throwable: {fileID: 41210257}
-  audiosource: {fileID: 0}
-  head: {fileID: 1257573555}
-  flag: {fileID: 1344976162}
-  loseCanvas: {fileID: 0}
-  winCanvas: {fileID: 0}
-  smoothcamscript: {fileID: 0}
-  loseSound: {fileID: 0}
-  winSound: {fileID: 0}
-  bgm: {fileID: 0}
-  birdScore: 0
-  previousScore: 0
-  newScore: 0
 --- !u!61 &1257573557
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4551,7 +4523,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.64, y: 0.49}
-    newSize: {x: 1.64, y: 0.49}
+    newSize: {x: 9.73, y: 0.49}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -4598,15 +4570,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b679145dc4c75b344a0c6bc33e1f412c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 23397c3bed411f444bec00a7c7d64f21, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.64, y: 0.49}
+  m_Size: {x: 9.73, y: 0.49}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &1257573559
@@ -4657,7 +4629,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 80d952c98a0c5eb4f98a812afad04314, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7b1781f442d68be40bf24b71b18c5c7c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
@@ -4814,7 +4786,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 90f22cd58a3dad0498b19859aef026ac, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 855ce97c5afbee648a2cff557ff0e0cf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4822,7 +4794,7 @@ SpriteRenderer:
   m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1344976164
@@ -4849,7 +4821,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c33c84da2c1f72a4eba1926d19baecc3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 400e63a9b680ea84faea3fefc13bc60b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -4991,7 +4963,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3ccabf4f75446d2419efd4ccbb55b5e0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 80d6a4a77c1f3184aa31b4f4bbf32626, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5128,10 +5100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 938904c6d325af8408e17573e87c9e13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PowerBarMask: {fileID: 304619733}
-  barChangeSpeed: 1
-  currentPowerBarValue: 0
-  powerBarOn: 0
 --- !u!1 &1435336120
 GameObject:
   m_ObjectHideFlags: 0
@@ -5685,7 +5653,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b11d27cdabd1e504eb4d0733c747dad5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5bb97be5782988849b6975976b3d01e8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5889,7 +5857,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5180cf718aa46b645b749ba82b584c63, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 54bb84786113504458b568ea75567758, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6312,7 +6280,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 47630195aee383543a9dd59c53f5a974, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0287b4432c4c4a64d9cbcdc9c24d741f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6386,7 +6354,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4b2044a689de55142b7756b9432596ff, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 18403fff6c91bbc46920c3c0fd989537, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6718,7 +6686,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 9.73, y: 0.49}
-    newSize: {x: 9.73, y: 0.49}
+    newSize: {x: 1.64, y: 0.49}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -6765,15 +6733,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d11e94af4fab4084db7ab69154f9aa60, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bb4c6bf0ea925f241a8e4791da43c383, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 9.73, y: 0.49}
+  m_Size: {x: 1.64, y: 0.49}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!222 &886065982896122062
