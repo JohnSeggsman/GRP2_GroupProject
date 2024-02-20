@@ -66,8 +66,8 @@ public class SmoothCameraBMX : MonoBehaviour
         if(distance.x >= 200 && toggleOnce == false)
         {
             // player win
-            Time.timeScale = 0;
             bikemovementscript.winGame = true;
+            
             toggleOnce = true;
         }
 
