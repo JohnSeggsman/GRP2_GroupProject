@@ -11,21 +11,15 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(this);
-<<<<<<< Updated upstream
-=======
         audioSource = GetComponent<AudioSource>();
->>>>>>> Stashed changes
 
         if (Instance == null)
             Instance = this;
         else
             Destroy(gameObject);
-<<<<<<< Updated upstream
 
         audioBGM.Play();
         audioSource = GetComponent<AudioSource>();
-=======
->>>>>>> Stashed changes
     }
 
     public void PlayBGM(int SceneID)

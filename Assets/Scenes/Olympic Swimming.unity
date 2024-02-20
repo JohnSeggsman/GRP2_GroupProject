@@ -185,7 +185,7 @@ SpriteRenderer:
   m_Size: {x: 19.5, y: 5.68}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &46754149
@@ -340,7 +340,7 @@ SpriteRenderer:
   m_Size: {x: 19.5, y: 5.68}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &116722465
@@ -653,7 +653,7 @@ SpriteRenderer:
   m_Size: {x: 1.12, y: 1.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &229712431
@@ -1190,7 +1190,7 @@ SpriteRenderer:
   m_Size: {x: 2.92, y: 2.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &359127014
@@ -1732,7 +1732,7 @@ SpriteRenderer:
   m_Size: {x: 0.89, y: 1.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &511766695
@@ -1813,7 +1813,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 2
   m_SpriteSortPoint: 0
 --- !u!4 &679655362
@@ -1998,7 +1998,7 @@ SpriteRenderer:
   m_Size: {x: 0.89, y: 1.48}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &864876668
@@ -2229,7 +2229,7 @@ SpriteRenderer:
   m_Size: {x: 1.5, y: 4.01}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &929918034
@@ -2241,15 +2241,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 929918030}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de43ccdbf78b298499205c93348c9d20, type: 3}
+  m_Script: {fileID: 11500000, guid: cd55be4074f6f424eae9291a60151cda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PLAP:
-  - {fileID: 864876666}
-  - {fileID: 229712429}
-  - {fileID: 511766693}
-  - {fileID: 1417842203}
-  - {fileID: 1210838302}
+  PLAP: []
   Plapping: 0
 --- !u!1 &985197509
 GameObject:
@@ -2553,7 +2548,7 @@ SpriteRenderer:
   m_Size: {x: 1.69, y: 0.15}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1089922293
@@ -2650,21 +2645,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1110741643}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3766ff44e527f994f8a38aef61c85a0e, type: 3}
+  m_Script: {fileID: 11500000, guid: e91e3ac6d69b0b74e986badc68a3f0d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Obstacles:
-  - {fileID: 3474829032963434616, guid: 2b7c2b4cc89dd2d48a6497d405bea9ba, type: 3}
-  - {fileID: 2380620280850960249, guid: 18316e11966067f4580d060bf7040947, type: 3}
-  - {fileID: 7383673385103917482, guid: a4de2172f9164fc48a730a686f9f1a63, type: 3}
-  - {fileID: 5958151405892996825, guid: 420a4c646310f6949ac8eb290d2d9dee, type: 3}
-  - {fileID: 8510926077762784836, guid: 4478ec390778f5a499f8232ac9cccd90, type: 3}
-  Spawns:
-  - {fileID: 2145747173}
-  - {fileID: 2029999876}
+  speed: 0
   SS: {fileID: 0}
-  bubblesChance: 0
-  aboveCounter: 0
 --- !u!1 &1199565136
 GameObject:
   m_ObjectHideFlags: 0
@@ -2929,7 +2914,7 @@ SpriteRenderer:
   m_Size: {x: 0.67, y: 1.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1210838304
@@ -3352,7 +3337,7 @@ SpriteRenderer:
   m_Size: {x: 0.89, y: 1.48}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1417842205
@@ -3654,7 +3639,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 1.63}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1632864524
@@ -3700,69 +3685,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 1632864522}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d73edead8f13ebf409597fd258b02e5e, type: 3}
+  m_Script: {fileID: 11500000, guid: 62b89f4cd9cc5354b9cfa6d32a9b480a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BubbleSprite: {fileID: 1024895428}
-  mainCam: {fileID: 1014083678}
-  winCam: {fileID: 1549108518}
-  meterBox: {fileID: 886065983146760984}
-  timerBox: {fileID: 886065983902694230}
-  endPoint: {fileID: 2112149984}
-  transition: {fileID: 679655360}
-  transMask: {fileID: 874825650}
-  spriteWin: {fileID: 1256797266}
-  Bubbles:
-  - {fileID: 21300000, guid: e3bbbd69bdc74044aa788038441a5442, type: 3}
-  - {fileID: 21300000, guid: a634f607042498443b70269de7684eca, type: 3}
-  - {fileID: 21300000, guid: f3b2dbf3a66dc4446bfc8d7a536602b7, type: 3}
-  - {fileID: 21300000, guid: 9d8267e17a4b2144c939f568ec6b1478, type: 3}
-  - {fileID: 21300000, guid: d7598de932b1b84479f4bd58509cc303, type: 3}
-  - {fileID: 21300000, guid: 80b8010ab346524468b88d3f02a9ef7f, type: 3}
-  - {fileID: 21300000, guid: a9cbdcacfe6c72c48b34c33f4e9ac7a3, type: 3}
-  - {fileID: 21300000, guid: 55db31ac0c0e77e4e9846549f8ad91d8, type: 3}
-  - {fileID: 21300000, guid: a49d5fdbe69e72a4b8a327d538921653, type: 3}
-  - {fileID: 21300000, guid: b1041b1bee220ba4099f6deb355ceb28, type: 3}
-  - {fileID: 21300000, guid: c9bec351405874e4fae19c184862edc0, type: 3}
-  audioClips:
-  - {fileID: 8300000, guid: d289d8ac4c55c864cbfcc1cad5eec002, type: 3}
-  - {fileID: 8300000, guid: 29006b295b1d389418f997009acf19fb, type: 3}
-  - {fileID: 8300000, guid: 9c20c0c57dc6a544fa3ad2f45212e38c, type: 3}
-  - {fileID: 8300000, guid: 901d4a26e1c707743a5bee6b7c88f9b8, type: 3}
-  - {fileID: 8300000, guid: f25e658cbfc1e9d478bb3b81641764fd, type: 3}
-  buttons:
-  - {fileID: 886065983304727393}
-  - {fileID: 886065982664397164}
-  - {fileID: 1869773865}
-  - {fileID: 452354235}
-  - {fileID: 500770949}
-  - {fileID: 2102363061}
-  - {fileID: 1669871762}
-  - {fileID: 306029784}
-  winSprites:
-  - {fileID: 21300000, guid: 5a148fb9ea5fa0b4d99bd027900e0904, type: 3}
-  - {fileID: 21300000, guid: 29c017cb22540ed44a78e7decf19daf1, type: 3}
-  - {fileID: 21300000, guid: 11bf7a243ab479b428096e8045ff7c77, type: 3}
-  instructionUI: {fileID: 218564637}
-  meterTxt: {fileID: 886065983146760982}
-  timerTxt: {fileID: 886065983902694231}
-  highScoreTxt: {fileID: 886065983673545296}
-  currentScoreTxt: {fileID: 7486964139714956451}
-  avoidedText: {fileID: 886065983101800976}
-  divedText: {fileID: 886065983000983021}
-  currentM: {fileID: 886065984199817921}
-  currentT: {fileID: 886065983448211579}
-  PauseMenu: {fileID: 1782511913}
-  WTDManual: {fileID: 484979718}
-  backgroundScroll: {fileID: 1793372852}
-  WRText: {fileID: 4725454827060320111}
-  ORText: {fileID: 4725454825880879460}
+  BubbleSprite: {fileID: 0}
+  mainCam: {fileID: 0}
+  winCam: {fileID: 0}
+  meterBox: {fileID: 0}
+  timerBox: {fileID: 0}
+  endPoint: {fileID: 0}
+  transition: {fileID: 0}
+  transMask: {fileID: 0}
+  spriteWin: {fileID: 0}
+  Bubbles: []
+  audioClips: []
+  buttons: []
+  winSprites: []
+  instructionUI: {fileID: 0}
+  meterTxt: {fileID: 0}
+  timerTxt: {fileID: 0}
+  highScoreTxt: {fileID: 0}
+  currentScoreTxt: {fileID: 0}
+  avoidedText: {fileID: 0}
+  divedText: {fileID: 0}
+  currentM: {fileID: 0}
+  currentT: {fileID: 0}
+  PauseMenu: {fileID: 0}
+  WTDManual: {fileID: 0}
+  backgroundScroll: {fileID: 0}
+  WRText: {fileID: 0}
+  ORText: {fileID: 0}
   playerCollider: {fileID: 0}
-  animator: {fileID: 1632864525}
-  endAnimator: {fileID: 1089922295}
-  recordAnimator: {fileID: 4725454826763934865}
-  LoseAnim: {fileID: 1643696959}
-  WinAnim: {fileID: 2013365540}
+  animator: {fileID: 0}
+  endAnimator: {fileID: 0}
+  recordAnimator: {fileID: 0}
+  LoseAnim: {fileID: 0}
+  WinAnim: {fileID: 0}
   IMMORTALITY: 0
   timeDived: 0
   objectAvoided: 0
@@ -4299,7 +4257,7 @@ SpriteRenderer:
   m_Size: {x: 19.5, y: 5.68}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1780878792
@@ -4421,7 +4379,7 @@ SpriteRenderer:
   m_Size: {x: 19.5, y: 5.68}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1793372854
@@ -5463,7 +5421,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &2112149986
