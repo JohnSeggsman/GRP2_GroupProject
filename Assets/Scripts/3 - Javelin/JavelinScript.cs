@@ -77,8 +77,11 @@ public class JavelinScript : MonoBehaviour
             if (distanceTraveled <= 0)
             {
                 distanceTraveled = 0;
+                if(rb.velocity.x <= 1f)
+                {
+                    StartCoroutine(nameof(LoseScene));
+                }
                 
-                //Fail
             }
             else
             {
