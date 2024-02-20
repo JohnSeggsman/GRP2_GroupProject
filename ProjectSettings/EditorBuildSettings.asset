@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Olympic Boxing.unity
     guid: 0728b18498383c64ead4e2f10a051c91
+  - enabled: 1
+    path: Assets/Scenes/Olympic Cycling.unity
+    guid: efc969b753b43c14889b2fa98d9d8559
   m_configObjects: {}
