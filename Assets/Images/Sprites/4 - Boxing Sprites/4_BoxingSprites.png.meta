@@ -1,0 +1,491 @@
+fileFormatVersion: 2
+guid: f9394a36c5e31e84bb08429fec0336c1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 554652008412985179
+    second: 1_100MDashSprites_0
+  - first:
+      213: 5583854031644698389
+    second: 1_100MDashSprites_1
+  - first:
+      213: 3311810534682552596
+    second: 1_100MDashSprites_2
+  - first:
+      213: 7512788226964466574
+    second: 1_100MDashSprites_3
+  - first:
+      213: -9190968018308581397
+    second: 1_100MDashSprites_4
+  - first:
+      213: 6755934836235518704
+    second: 1_100MDashSprites_5
+  - first:
+      213: 7809649155107238499
+    second: 1_100MDashSprites_6
+  - first:
+      213: -3785778989014969039
+    second: 1_100MDashSprites_0
+  - first:
+      213: -5472605566839852886
+    second: 1_100MDashSprites_1
+  - first:
+      213: 8889203015152041327
+    second: 1_100MDashSprites_2
+  - first:
+      213: 5851259864354550470
+    second: 1_100MDashSprites_3
+  - first:
+      213: 8319629092347175408
+    second: 1_100MDashSprites_4
+  - first:
+      213: 1030386580548811058
+    second: 1_100MDashSprites_5
+  - first:
+      213: -7545822614708315724
+    second: 1_100MDashSprites_6
+  - first:
+      213: -9139853864228601656
+    second: 1_100MDashSprites_7
+  - first:
+      213: 5955255565071813580
+    second: 1_BoxingSprites_0
+  - first:
+      213: 6679156575711993426
+    second: 1_BoxingSprites_1
+  - first:
+      213: -3244997086466245528
+    second: 1_BoxingSprites_2
+  - first:
+      213: -8082016494432204310
+    second: 1_BoxingSprites_3
+  - first:
+      213: -6915052257480383708
+    second: 1_BoxingSprites_4
+  - first:
+      213: -876705169289996348
+    second: 1_BoxingSprites_5
+  - first:
+      213: 6467615702869700005
+    second: 1_BoxingSprites_6
+  - first:
+      213: -1452237198424825855
+    second: 1_BoxingSprites_7
+  - first:
+      213: -7682252290067010523
+    second: 1_BoxingSprites_8
+  - first:
+      213: 613186297510617086
+    second: 1_BoxingSprites_9
+  - first:
+      213: 1934648385993191585
+    second: 1_BoxingSprites_10
+  - first:
+      213: -3630006917540439561
+    second: 1_BoxingSprites_11
+  - first:
+      213: 6673802446490421874
+    second: 1_BoxingSprites_12
+  - first:
+      213: -2862703405817659436
+    second: 1_BoxingSprites_13
+  - first:
+      213: -8552148955286146971
+    second: 1_BoxingSprites_14
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 1_BoxingSprites_0
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 670
+        width: 168
+        height: 410
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccb06c6526155a250800000000000000
+      internalID: 5955255565071813580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1_BoxingSprites_1
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 670
+        width: 172
+        height: 410
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25e1786948121bc50800000000000000
+      internalID: 6679156575711993426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1_BoxingSprites_2
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 670
+        width: 156
+        height: 410
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86c7004b75477f2d0800000000000000
+      internalID: -3244997086466245528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1_BoxingSprites_3
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 670
+        width: 159
+        height: 410
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae9458491d8e6df80800000000000000
+      internalID: -8082016494432204310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1_BoxingSprites_4
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 670
+        width: 185
+        height: 410
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4236e9dfb9cc800a0800000000000000
+      internalID: -6915052257480383708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1_BoxingSprites_5
+      rect:
+        serializedVersion: 2
+        x: 1121
+        y: 670
+        width: 185
+        height: 410
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c798b32b4155d3f0800000000000000
+      internalID: -876705169289996348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1_BoxingSprites_6
+      rect:
+        serializedVersion: 2
+        x: 1351
+        y: 670
+        width: 222
+        height: 410
+      alignment: 9
+      pivot: {x: 0.8, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ad6941073691c950800000000000000
+      internalID: 6467615702869700005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1_BoxingSprites_8
+      rect:
+        serializedVersion: 2
+        x: 1651
+        y: 670
+        width: 222
+        height: 410
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52cef979e38236590800000000000000
+      internalID: -7682252290067010523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1_BoxingSprites_10
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 251
+        width: 156
+        height: 409
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a03864f47049da10800000000000000
+      internalID: 1934648385993191585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1_BoxingSprites_11
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 251
+        width: 209
+        height: 409
+      alignment: 9
+      pivot: {x: 0.9, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f99acbe0ff9f9dc0800000000000000
+      internalID: -3630006917540439561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1_BoxingSprites_12
+      rect:
+        serializedVersion: 2
+        x: 876
+        y: 252
+        width: 209
+        height: 409
+      alignment: 9
+      pivot: {x: 0.1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27ac13c37fb1e9c50800000000000000
+      internalID: 6673802446490421874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1_BoxingSprites_13
+      rect:
+        serializedVersion: 2
+        x: 1299
+        y: 251
+        width: 222
+        height: 410
+      alignment: 9
+      pivot: {x: 0.8, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dfffee6b62a548d0800000000000000
+      internalID: -2862703405817659436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1_BoxingSprites_14
+      rect:
+        serializedVersion: 2
+        x: 1599
+        y: 251
+        width: 222
+        height: 410
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 560f0fd16d9a05980800000000000000
+      internalID: -8552148955286146971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
