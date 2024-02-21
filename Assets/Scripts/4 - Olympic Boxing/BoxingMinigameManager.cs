@@ -115,6 +115,12 @@ public class BoxingMinigameManager : MonoBehaviour
                     InteractionOutcome("Dodge");
                     GameObject.Find("MinigameManager").GetComponent<AudioSource>().PlayOneShot(MinigameSFX[8]);
                 }
+                // Pause Menu
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    Time.timeScale = GameObjects[6].gameObject.activeInHierarchy == false ? 0 : 1;
+                    GameObjects[6].gameObject.SetActive(GameObjects[6].gameObject.activeInHierarchy == false ? true : false);
+                }
             }
         }
 
@@ -305,6 +311,7 @@ public class BoxingMinigameManager : MonoBehaviour
 
     public void EndSceneButtons(int Options)
     {
+        Time.timeScale = 1;
         switch (Options)
         {
             case 1:
