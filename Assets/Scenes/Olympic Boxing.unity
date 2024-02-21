@@ -983,10 +983,7 @@ RectTransform:
   - {fileID: 1350781476759550528}
   - {fileID: 1350781476798687645}
   - {fileID: 1991502245}
-<<<<<<< Updated upstream
-=======
   - {fileID: 1840649075560079176}
->>>>>>> Stashed changes
   - {fileID: 3522004918223047294}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -6435,11 +6432,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-<<<<<<< Updated upstream
-      - m_Target: {fileID: 0}
-=======
       - m_Target: {fileID: 890177876}
->>>>>>> Stashed changes
         m_MethodName: EndSceneButtons
         m_Mode: 3
         m_Arguments:
@@ -6713,11 +6706,7 @@ RectTransform:
   - {fileID: 3522004918234443891}
   - {fileID: 3522004917982732001}
   m_Father: {fileID: 1086291088}
-<<<<<<< Updated upstream
-  m_RootOrder: 14
-=======
   m_RootOrder: 15
->>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6804,11 +6793,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-<<<<<<< Updated upstream
-      - m_Target: {fileID: 0}
-=======
       - m_Target: {fileID: 890177876}
->>>>>>> Stashed changes
         m_MethodName: EndSceneButtons
         m_Mode: 3
         m_Arguments:
