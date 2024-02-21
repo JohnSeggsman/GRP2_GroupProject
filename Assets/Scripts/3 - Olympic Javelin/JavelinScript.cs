@@ -22,6 +22,7 @@ public class JavelinScript : MonoBehaviour
     public float birdScore;
     public float previousScore;
     public float newScore;
+    public bool isOver;
     //PowerBarScript powerbarscript;
     private void Awake()
     {
@@ -35,6 +36,7 @@ public class JavelinScript : MonoBehaviour
         audiosource = GetComponent<AudioSource>();
         loseSound = loseSound.GetComponent<AudioSource>();
         winSound = winSound.GetComponent<AudioSource>();
+        isOver = false;
     }
 
     // Update is called once per frame
@@ -88,11 +90,11 @@ public class JavelinScript : MonoBehaviour
 
             }
 
-            if(rb.simulated == false && distanceTraveled >= 0 && distanceTraveled < 88)
+            if(rb.simulated == false && distanceTraveled >= 0 && distanceTraveled < 88 && !isOver)
             {
                 StartCoroutine(nameof(LoseScene));
             }
-            if(rb.simulated == false && distanceTraveled >= 88)
+            if(rb.simulated == false && distanceTraveled >= 88 && !isOver)
             {
                 StartCoroutine(nameof(WinScene));
             }
@@ -138,8 +140,7 @@ public class JavelinScript : MonoBehaviour
 
     public IEnumerator WinScene()
     {
-        
-        winSound.Play();
+        isOver = true;
         //old record upon playerprefs
         newScore = distanceTraveled;
         if (distanceTraveled > PlayerPrefs.GetFloat("OldRecord", previousScore))
@@ -176,12 +177,14 @@ public class JavelinScript : MonoBehaviour
         //audiosource.Play();
         throwable.audiosource.Stop();
         previousScore = distanceTraveled;
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.0f);
+        winSound.Play();
         bgm.SetActive(false);
         winCanvas.SetActive(true);
     }
     public IEnumerator LoseScene()
     {
+        isOver = true;
         bgm.SetActive(false);
         throwable.audiosource.Stop();
         loseSound.Play();

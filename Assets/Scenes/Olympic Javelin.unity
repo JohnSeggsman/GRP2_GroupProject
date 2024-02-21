@@ -232,6 +232,7 @@ MonoBehaviour:
   oldScoreText: {fileID: 1703221675}
   titleText: {fileID: 156260616}
   birdText: {fileID: 2057294842}
+  AM: {fileID: 0}
 --- !u!1 &41210253
 GameObject:
   m_ObjectHideFlags: 0
@@ -2170,8 +2171,8 @@ MonoBehaviour:
   loseCanvas: {fileID: 1065413162}
   winCanvas: {fileID: 229242965}
   smoothcamscript: {fileID: 32400700}
-  loseSound: {fileID: 1344976165}
-  winSound: {fileID: 568133699}
+  loseSound: {fileID: 611907080}
+  winSound: {fileID: 1344976165}
   bgm: {fileID: 1279567451}
   birdScore: 0
   previousScore: 0
@@ -4822,7 +4823,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 400e63a9b680ea84faea3fefc13bc60b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 01be6e909815c3a4aa7c71a6e055b469, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

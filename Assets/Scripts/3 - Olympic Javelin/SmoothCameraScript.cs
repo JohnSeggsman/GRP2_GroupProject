@@ -23,6 +23,8 @@ public class SmoothCameraScript : MonoBehaviour
     public Text oldScoreText;
     public Text titleText;
     public Text birdText;
+
+    public AudioManager AM;
     private void Awake()
     {
 
@@ -31,6 +33,7 @@ public class SmoothCameraScript : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
+        AM = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         
     }
 
@@ -103,8 +106,7 @@ public class SmoothCameraScript : MonoBehaviour
     public void MainMenu()
     {
         Time.timeScale = 1;
-        //AudioManager temp = GameObject.Find("AudioManager").GetComponent<AudioManager>();
-        //temp.PlayBGM(0);
+        AM.PlayBGM(0);
         SceneManager.LoadScene(0);
     }
 }
