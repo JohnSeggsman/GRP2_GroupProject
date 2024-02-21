@@ -17,9 +17,6 @@ public class AudioManager : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
-
-        audioBGM.Play();
-        audioSource = GetComponent<AudioSource>();
     }
 
     public void PlayBGM(int SceneID)

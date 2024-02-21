@@ -84,8 +84,15 @@ public class DashMinigameManager : MonoBehaviour
                     SlideTimer = 0.9f;
                 }
             }
+            // Stride Speed
             if (Input.GetKeyDown(KeyCode.Space) && RunTimer >= 0 && Speed < 10f)
                 Speed += 1f;
+            // Pause Menu
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Time.timeScale = GameObjects[3].gameObject.activeInHierarchy == false ? 0 : 1;
+                GameObjects[3].gameObject.SetActive(GameObjects[3].gameObject.activeInHierarchy == false ? true : false);
+            }
         }
 
         // Walking Sound Controller
@@ -132,6 +139,7 @@ public class DashMinigameManager : MonoBehaviour
 
     public void EndSceneButtons(int Options)
     {
+        Time.timeScale = 1;
         switch (Options)
         {
             case 1:
