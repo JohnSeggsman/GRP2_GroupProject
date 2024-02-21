@@ -119,7 +119,11 @@ public class BoxingMinigameManager : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     Time.timeScale = GameObjects[6].gameObject.activeInHierarchy == false ? 0 : 1;
+<<<<<<< Updated upstream
                     GameObjects[3].gameObject.SetActive(GameObjects[6].gameObject.activeInHierarchy == false ? true : false);
+=======
+                    GameObjects[6].gameObject.SetActive(GameObjects[6].gameObject.activeInHierarchy == false ? true : false);
+>>>>>>> Stashed changes
                 }
             }
         }
