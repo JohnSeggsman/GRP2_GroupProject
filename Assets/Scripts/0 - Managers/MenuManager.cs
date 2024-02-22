@@ -32,6 +32,7 @@ public class MenuManager : MonoBehaviour
             GameObject UISportsTab = Instantiate(SportsTabPrefab, transform.position, Quaternion.identity);
             UISportsTab.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = SportsName[i]; // Sports Name
             UISportsTab.transform.GetChild(4).GetChild(1).GetComponent<Image>().sprite = SportsImage[i]; // Sports Image
+
             if (SportsName[i] == "Olympic Hurdle")
             {
                 UISportsTab.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetFloat("OldRecordRunning").ToString(); // Personal Best Timing
@@ -127,11 +128,13 @@ public class MenuManager : MonoBehaviour
         if (GameObject.Find("Canvas/OptionsTab/SettingsFrame/SettingsDropdown2").GetComponent<TMP_Dropdown>().value > 5)
             GameObject.Find("Canvas/OptionsTab/SettingsFrame/SettingsDropdown2").GetComponent<TMP_Dropdown>().value = 0;
     }
-
+    
     public void ResetData()
     {
         PlayerPrefs.DeleteAll();
         PlayerPrefs.Save();
+        SceneManager.LoadScene(0);
+
     }
 
     IEnumerator ResetAllOptions(float WaitTime)

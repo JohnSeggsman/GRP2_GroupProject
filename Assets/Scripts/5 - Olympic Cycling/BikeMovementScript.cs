@@ -38,16 +38,19 @@ public class BikeMovementScript : MonoBehaviour
 
     public Text oldScoreText;
     public Text newScoreText;
-    public float previousScore;
-    public float newScore;
+    public float previousScoreC;
+    public float newScoreC;
 
     public Text winTitle;
+
+    public bool savedScore;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = person.GetComponent<Animator>();
         currentStaminaAmount = maxStaminaAmount;
+
     }
 
     // Update is called once per frame
@@ -168,29 +171,8 @@ public class BikeMovementScript : MonoBehaviour
     }
     public IEnumerator WinScene()
     {
-        newScore = smoothcameraBMX.timerStuff;
-        if (smoothcameraBMX.timerStuff < PlayerPrefs.GetFloat("OldRecordCycling", previousScore))
-        {
-            previousScore = smoothcameraBMX.timerStuff;
-            PlayerPrefs.SetFloat("OldRecordCycling", previousScore);
-
-            Debug.Log("Saved Score");
-
-        }
-        if(smoothcameraBMX.timerStuff <= 26)
-        {
-            winTitle.text = "CONGRATULATIONS!\nNEW WORLD RECORD!";
-        }
-        else if(smoothcameraBMX.timerStuff > 26 && smoothcameraBMX.timerStuff <= 27)
-        {
-            winTitle.text = "CONGRATULATIONS!\nNEW OLYMPIC RECORD!";
-        }
-        else if (smoothcameraBMX.timerStuff > 27)
-        {
-            winTitle.text = "CONGRATULATIONS!\nSKILL ISSUE!";
-        }
-        oldScoreText.text = "PREVIOUS RECORD: " + PlayerPrefs.GetFloat("OldRecordCycling").ToString("F2") + "S";
-        newScoreText.text = "LATEST RECORD: " + smoothcameraBMX.timerStuff.ToString("F2") + "S";
+        SaveCyclingData();
+        
 
 
         BGM.gameObject.SetActive(false);
@@ -200,5 +182,33 @@ public class BikeMovementScript : MonoBehaviour
         yield return new WaitForSeconds(3f);
         
         
+    }
+    public void SaveCyclingData()
+    {
+        savedScore = true;
+        newScoreC = smoothcameraBMX.timerStuff;
+        if (newScoreC < PlayerPrefs.GetFloat("OldRecordCycling", previousScoreC))
+        {
+            previousScoreC = newScoreC;
+            PlayerPrefs.Save();
+            PlayerPrefs.SetFloat("OldRecordCycling", previousScoreC);
+            Debug.Log("Saved Score");
+
+        }
+
+        if (smoothcameraBMX.timerStuff <= 26)
+        {
+            winTitle.text = "CONGRATULATIONS!\nNEW WORLD RECORD!";
+        }
+        else if (smoothcameraBMX.timerStuff > 26 && smoothcameraBMX.timerStuff <= 27)
+        {
+            winTitle.text = "CONGRATULATIONS!\nNEW OLYMPIC RECORD!";
+        }
+        else if (smoothcameraBMX.timerStuff > 27)
+        {
+            winTitle.text = "CONGRATULATIONS!\nSKILL ISSUE!";
+        }
+        oldScoreText.text = "PREVIOUS RECORD: " + PlayerPrefs.GetFloat("OldRecordCycling").ToString("F2") + "s";
+        newScoreText.text = "LATEST RECORD: " + newScoreC.ToString("F2") + "S";
     }
 }

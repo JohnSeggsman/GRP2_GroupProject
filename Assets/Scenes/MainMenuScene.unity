@@ -305,11 +305,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17093da445dfe46468b6efb6a03374de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashMinigameScript: {fileID: 0}
-  bikeMovementScript: {fileID: 0}
-  swimmingScript: {fileID: 0}
-  boxingMinigameScript: {fileID: 0}
-  javelinScript: {fileID: 0}
   buildIndex: 0
 --- !u!1 &144285652
 GameObject:

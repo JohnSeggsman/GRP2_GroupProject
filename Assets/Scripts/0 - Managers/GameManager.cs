@@ -6,12 +6,14 @@ public class GameManager : MonoBehaviour
 {
     // Variables
     public static GameManager Instance;
+    
     public DashMinigameManager dashMinigameScript;
     public BikeMovementScript bikeMovementScript;
     public SwimmingScript swimmingScript;
     public BoxingMinigameManager boxingMinigameScript;
     public JavelinScript javelinScript;
-
+    public SmoothCameraBMX smoothCameraBMX;
+    
     public int buildIndex;
     Scene currentScene;
 
@@ -24,12 +26,13 @@ public class GameManager : MonoBehaviour
         else
             Destroy(gameObject);
 
-
+        /*
         Debug.Log("Running" + PlayerPrefs.GetFloat("OldRecordRunning"));
         Debug.Log("Boxing" + PlayerPrefs.GetFloat("OldRecordBoxing"));
         Debug.Log("Swimming" + PlayerPrefs.GetFloat("OldRecordSwimming"));
         Debug.Log("Javelin" + PlayerPrefs.GetFloat("OldRecordJavelin"));
         Debug.Log("Cycling" + PlayerPrefs.GetFloat("OldRecordCycling"));
+        */
     }
 
     void Update()
@@ -58,7 +61,7 @@ public class GameManager : MonoBehaviour
         if (buildIndex == 1 && dashMinigameScript == null)
         {
             dashMinigameScript = GameObject.Find("MinigameManager").GetComponent<DashMinigameManager>();
-
+            
         }
         else if (buildIndex == 2 && swimmingScript == null)
         {
@@ -78,6 +81,7 @@ public class GameManager : MonoBehaviour
         else if (buildIndex == 5 && bikeMovementScript == null)
         {
             bikeMovementScript = GameObject.Find("Vehicle").GetComponent<BikeMovementScript>();
+            smoothCameraBMX = GameObject.Find("Main Camera").GetComponent<SmoothCameraBMX>();
             
         }
     }
@@ -87,6 +91,22 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("OnDisable");
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        
+    }
+    */
+    /*
+    public void SavedCyclingData()
+    {
+        bikeMovementScript.newScore = smoothCameraBMX.timerStuff;
+        if (bikeMovementScript.newScore < PlayerPrefs.GetFloat("OldRecordCycling", bikeMovementScript.previousScore))
+        {
+            bikeMovementScript.previousScore = bikeMovementScript.newScore;
+
+            PlayerPrefs.SetFloat("OldRecordCycling", bikeMovementScript.previousScore);
+
+            Debug.Log("Saved Score");
+
+        }
     }
     */
 }
