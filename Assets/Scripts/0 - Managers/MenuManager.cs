@@ -35,7 +35,7 @@ public class MenuManager : MonoBehaviour
 
             if (SportsName[i] == "Olympic Hurdle")
             {
-                UISportsTab.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetFloat("OldRecordRunning").ToString(); // Personal Best Timing
+                UISportsTab.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetFloat("OldRecordRunning").ToString() + " points"; // Personal Best Timing
             }
             else if (SportsName[i] == "Olympic Swimming")
             {

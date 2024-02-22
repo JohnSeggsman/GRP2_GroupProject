@@ -172,30 +172,31 @@ public class BikeMovementScript : MonoBehaviour
     public IEnumerator WinScene()
     {
         SaveCyclingData();
-        
-
-
         BGM.gameObject.SetActive(false);
         winSound.Play();
         winPanel.SetActive(true);
         Time.timeScale = 0;
         yield return new WaitForSeconds(3f);
-        
-        
     }
+
     public void SaveCyclingData()
     {
         savedScore = true;
         newScoreC = smoothcameraBMX.timerStuff;
-        if (newScoreC < PlayerPrefs.GetFloat("OldRecordCycling", previousScoreC))
+        if (PlayerPrefs.GetFloat("OldRecordCycling") == 0)
         {
             previousScoreC = newScoreC;
             PlayerPrefs.Save();
             PlayerPrefs.SetFloat("OldRecordCycling", previousScoreC);
             Debug.Log("Saved Score");
-
         }
-
+        else if (newScoreC < PlayerPrefs.GetFloat("OldRecordCycling", previousScoreC))
+        {
+            previousScoreC = newScoreC;
+            PlayerPrefs.Save();
+            PlayerPrefs.SetFloat("OldRecordCycling", previousScoreC);
+            Debug.Log("Saved Score");
+        }
         if (smoothcameraBMX.timerStuff <= 26)
         {
             winTitle.text = "CONGRATULATIONS!\nNEW WORLD RECORD!";
@@ -210,5 +211,6 @@ public class BikeMovementScript : MonoBehaviour
         }
         oldScoreText.text = "PREVIOUS RECORD: " + PlayerPrefs.GetFloat("OldRecordCycling").ToString("F2") + "s";
         newScoreText.text = "LATEST RECORD: " + newScoreC.ToString("F2") + "S";
+
     }
 }

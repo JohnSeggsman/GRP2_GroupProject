@@ -131,6 +131,14 @@ public class DashMinigameManager : MonoBehaviour
         RunTimer = 1;
         isGameEnded = true;
         AudioManager.Instance.StopBGM();
+        if (ScoreObtained > PlayerPrefs.GetFloat("OldRecordRunning", bestScoreObtained))
+        {
+            bestScoreObtained = ScoreObtained;
+            PlayerPrefs.SetFloat("OldRecordRunning", bestScoreObtained);
+
+            Debug.Log("Saved Score" + bestScoreObtained);
+
+        }
         GameObject.Find("Canvas").GetComponent<Animator>().SetTrigger("TriggerOutcome");
         GameObject.Find("Canvas/OutcomeResults/OutcomeResult1").GetComponent<TextMeshProUGUI>().text = "Race Time: " + System.Math.Round(RaceTimer, 1).ToString() + "s";
         GameObject.Find("Canvas/OutcomeResults/OutcomeResult2").GetComponent<TextMeshProUGUI>().text = "Steps Taken: " + TapCount;
@@ -191,14 +199,6 @@ public class DashMinigameManager : MonoBehaviour
                 {
                     if (isGameEnded == false)
                     {
-                        if (ScoreObtained > PlayerPrefs.GetFloat("OldRecordRunning", bestScoreObtained))
-                        {
-                            bestScoreObtained = ScoreObtained;
-                            PlayerPrefs.SetFloat("OldRecordRunning", bestScoreObtained);
-
-                            Debug.Log("Saved Score" + bestScoreObtained);
-
-                        }
                         if (RaceTimer < 50)
                         {
                             ScoreObtained = (int)((9999 - TapCount) * (SprintDuration / RaceTimer) * (100 / (100 + RaceTimer)));
