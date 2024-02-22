@@ -13,7 +13,6 @@ public class MenuManager : MonoBehaviour
     [Header("Sports Reference - Update if necessary")]
     public string[] SportsName;
     public Sprite[] SportsImage;
-    public float[] SportsData;
 
 
     [Header("Menu Reference - DO NOT TOUCH!")]
@@ -127,6 +126,12 @@ public class MenuManager : MonoBehaviour
     {
         if (GameObject.Find("Canvas/OptionsTab/SettingsFrame/SettingsDropdown2").GetComponent<TMP_Dropdown>().value > 5)
             GameObject.Find("Canvas/OptionsTab/SettingsFrame/SettingsDropdown2").GetComponent<TMP_Dropdown>().value = 0;
+    }
+
+    public void ResetData()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
     }
 
     IEnumerator ResetAllOptions(float WaitTime)
