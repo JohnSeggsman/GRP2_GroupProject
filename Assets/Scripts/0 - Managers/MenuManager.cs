@@ -36,6 +36,7 @@ public class MenuManager : MonoBehaviour
             if (SportsName[i] == "Olympic Hurdle")
             {
                 UISportsTab.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetFloat("OldRecordRunning").ToString(); // Personal Best Timing
+
             }
             else if (SportsName[i] == "Olympic Swimming")
             {
@@ -56,6 +57,33 @@ public class MenuManager : MonoBehaviour
 
             UISportsTab.transform.GetChild(3).GetComponent<Button>().onClick.AddListener(() => onButtonPressed(1));
             UISportsTab.transform.SetParent(SportsTabLocation.transform, false);
+        }
+        for (int i = 0; i < SportsName.Length; i++)
+        {
+
+            if (SportsName[i] == "Olympic Hurdle")
+            {
+                
+
+            }
+            else if (SportsName[i] == "Olympic Swimming")
+            {
+                
+            }
+            else if (SportsName[i] == "Olympic Javelin")
+            {
+                
+            }
+            else if (SportsName[i] == "Olympic Boxing")
+            {
+                
+            }
+            else if (SportsName[i] == "Olympic Cycling")
+            {
+
+            }
+
+
         }
     }
 
