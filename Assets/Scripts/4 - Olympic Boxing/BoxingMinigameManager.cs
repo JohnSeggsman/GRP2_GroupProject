@@ -14,7 +14,7 @@ public class BoxingMinigameManager : MonoBehaviour
     public Sprite[] PodiumSprites;
     public float FightTimer, EnemyActionTimer;
     public bool isGameEnded, isKnockedOut, PerfectRound;
-    private int CurrentAnimID, HitCount, PunchCount, BlockCount, DodgeCount, PlayerHP, EnemyHP, EnemyKO, EnemyPKO, EnemyHitStun, bestEnemyKO;
+    private int CurrentAnimID, HitCount, PunchCount, BlockCount, DodgeCount, PlayerHP, EnemyHP, EnemyKO, EnemyPKO, EnemyHitStun, bestEnemyKO, bestEnemyPKO;
     [SerializeReference] private float AttackTimer, BlockTimer, HitTimer;
     private string AttackSide;
     private bool isDodging, EnemyKnockout, KeyRotation, SwingLeft, SwingRight, AttackingLeft, AttackingRight;
@@ -374,6 +374,14 @@ public class BoxingMinigameManager : MonoBehaviour
                             PlayerPrefs.SetFloat("OldRecordBoxing", bestEnemyKO);
 
                             Debug.Log("Saved Score" + bestEnemyKO);
+
+                        }
+                        if (EnemyPKO > PlayerPrefs.GetFloat("OldRecordPerfectBoxing", bestEnemyPKO))
+                        {
+                            bestEnemyPKO = EnemyPKO;
+                            PlayerPrefs.SetFloat("OldRecordPerfectBoxing", bestEnemyPKO);
+
+                            Debug.Log("Saved Score" + bestEnemyPKO);
 
                         }
                         if (EnemyKO > 3)

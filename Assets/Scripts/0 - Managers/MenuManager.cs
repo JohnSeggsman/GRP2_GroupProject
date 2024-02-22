@@ -62,24 +62,118 @@ public class MenuManager : MonoBehaviour
 
             if (SportsName[i] == "Olympic Hurdle")
             {
-                
-
+                if (PlayerPrefs.GetFloat("OldRecordRunningTime") < 38.0f && PlayerPrefs.GetFloat("OldRecordRunning") >= 7000)
+                {
+                    //wr
+                }
+                else if ((PlayerPrefs.GetFloat("OldRecordRunningTime") >= 38.0f && PlayerPrefs.GetFloat("OldRecordRunningTime") < 39.6f && PlayerPrefs.GetFloat("OldRecordRunning") >= 6750) || (PlayerPrefs.GetFloat("OldRecordRunningTime") < 38.0f && PlayerPrefs.GetFloat("OldRecordRunning") < 7000))
+                {
+                    //or
+                }
+                else if ((PlayerPrefs.GetFloat("OldRecordRunningTime") >= 39.6f && PlayerPrefs.GetFloat("OldRecordRunningTime") < 43) || (PlayerPrefs.GetFloat("OldRecordRunningTime") < 39.6f && PlayerPrefs.GetFloat("OldRecordRunning") < 6750))
+                {
+                    //gold
+                }
+                else if (PlayerPrefs.GetFloat("OldRecordRunningTime") >= 43 && PlayerPrefs.GetFloat("OldRecordRunningTime") < 46)
+                {
+                    //silver
+                }
+                else if (PlayerPrefs.GetFloat("OldRecordRunningTime") >= 46)
+                {
+                    //bronze
+                }
             }
             else if (SportsName[i] == "Olympic Swimming")
             {
-                
+                if (PlayerPrefs.GetFloat("OldRecordSwimming") > 0 && PlayerPrefs.GetFloat("OldRecordSwimming") <= 40)
+                {
+                    //wr
+                }
+                else if (PlayerPrefs.GetFloat("OldRecordSwimming") > 40 && PlayerPrefs.GetFloat("OldRecordSwimming") <= 43)
+                {
+                    //or
+                }
+                else if (PlayerPrefs.GetFloat("OldRecordSwimming") > 43 && PlayerPrefs.GetFloat("OldRecordSwimming") < 45)
+                {
+                    //gold
+                }
+                else if (PlayerPrefs.GetFloat("OldRecordSwimming") > 45 && PlayerPrefs.GetFloat("OldRecordSwimming") < 50)
+                {
+                    //silver
+                }
+                else if (PlayerPrefs.GetFloat("OldRecordSwimming") > 50 && PlayerPrefs.GetFloat("OldRecordSwimming") < 60)
+                {
+                    //bronze
+                }
             }
             else if (SportsName[i] == "Olympic Javelin")
             {
-                
+                if (PlayerPrefs.GetFloat("OldRecordJavelin") > 88 && PlayerPrefs.GetFloat("OldRecordJavelin") < 100)
+                {
+                    //bronze
+                }
+                else if (PlayerPrefs.GetFloat("OldRecordJavelin") > 100 && PlayerPrefs.GetFloat("OldRecordJavelin") < 118)
+                {
+                    //silver
+                }
+                else if (PlayerPrefs.GetFloat("OldRecordJavelin") > 118 && PlayerPrefs.GetFloat("OldRecordJavelin") < 125)
+                {
+                    //gold
+                }
+                else if (PlayerPrefs.GetFloat("OldRecordJavelin") > 125 && PlayerPrefs.GetFloat("OldRecordJavelin") < 130)
+                {
+                    //or
+                }
+                else if (PlayerPrefs.GetFloat("OldRecordJavelin") > 130)
+                {
+                    //wr
+                }
             }
             else if (SportsName[i] == "Olympic Boxing")
             {
-                
+                if (PlayerPrefs.GetFloat("OldRecordBoxing") >= 8 && PlayerPrefs.GetFloat("OldRecordPerfectBoxing") >= 6)
+                {
+                    //wr
+                }
+                else if ((PlayerPrefs.GetFloat("OldRecordBoxing") >= 6 && PlayerPrefs.GetFloat("OldRecordBoxing") < 8 && PlayerPrefs.GetFloat("OldRecordPerfectBoxing") >= 3) || (PlayerPrefs.GetFloat("OldRecordBoxing") >= 8 && PlayerPrefs.GetFloat("OldRecordPerfectBoxing") < 6))
+                {
+                    //or
+                }
+                else if ((PlayerPrefs.GetFloat("OldRecordBoxing") >= 5 && PlayerPrefs.GetFloat("OldRecordBoxing") < 6) || (PlayerPrefs.GetFloat("OldRecordBoxing") >= 6 && PlayerPrefs.GetFloat("OldRecordPerfectBoxing") < 3))
+                {
+                    //gold
+                }
+                else if ((PlayerPrefs.GetFloat("OldRecordBoxing") >= 4 && (PlayerPrefs.GetFloat("OldRecordBoxing") < 5)))
+                {
+                    //silver
+                }
+                else if ((PlayerPrefs.GetFloat("OldRecordBoxing") >= 3 && (PlayerPrefs.GetFloat("OldRecordBoxing") < 4)))
+                {
+                    //bronze
+                }
             }
             else if (SportsName[i] == "Olympic Cycling")
             {
-
+                if (PlayerPrefs.GetFloat("OldRecordCycling") > 0 && PlayerPrefs.GetFloat("OldRecordCycling") <= 26)
+                {
+                    //wr
+                }
+                else if (PlayerPrefs.GetFloat("OldRecordCycling") > 26 && PlayerPrefs.GetFloat("OldRecordCycling") <= 27)
+                {
+                    //or
+                }
+                else if (PlayerPrefs.GetFloat("OldRecordCycling") > 27 && PlayerPrefs.GetFloat("OldRecordCycling") < 30)
+                {
+                    //gold
+                }
+                else if (PlayerPrefs.GetFloat("OldRecordCycling") > 30 && PlayerPrefs.GetFloat("OldRecordCycling") < 35)
+                {
+                    //silver
+                }
+                else if (PlayerPrefs.GetFloat("OldRecordCycling") > 35 && PlayerPrefs.GetFloat("OldRecordCycling") < 40)
+                {
+                    //bronze
+                }
             }
 
 

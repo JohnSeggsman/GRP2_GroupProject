@@ -18,6 +18,7 @@ public class DashMinigameManager : MonoBehaviour
     private float SprintDuration, RunTimer, JumpTimer, SlideTimer, ObstacleTimer;
 
     private int bestScoreObtained;
+    private float bestTimeObtained;
 
     void Start()
     {
@@ -138,6 +139,19 @@ public class DashMinigameManager : MonoBehaviour
 
             Debug.Log("Saved Score" + bestScoreObtained);
 
+        }
+        if (RaceTimer < PlayerPrefs.GetFloat("OldRecordRunningTime", bestTimeObtained))
+        {
+            bestTimeObtained = RaceTimer;
+            PlayerPrefs.SetFloat("OldRecordRunningTime", bestTimeObtained);
+
+            Debug.Log("Saved Score" + bestTimeObtained);
+
+        }
+        else if(PlayerPrefs.GetFloat("OldRecordRunningTime") == 0)
+        {
+            bestTimeObtained = RaceTimer;
+            PlayerPrefs.SetFloat("OldRecordRunningTime", bestTimeObtained);
         }
         GameObject.Find("Canvas").GetComponent<Animator>().SetTrigger("TriggerOutcome");
         GameObject.Find("Canvas/OutcomeResults/OutcomeResult1").GetComponent<TextMeshProUGUI>().text = "Race Time: " + System.Math.Round(RaceTimer, 1).ToString() + "s";
