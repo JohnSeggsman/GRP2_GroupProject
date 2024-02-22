@@ -33,23 +33,23 @@ public class MenuManager : MonoBehaviour
             GameObject UISportsTab = Instantiate(SportsTabPrefab, transform.position, Quaternion.identity);
             UISportsTab.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = SportsName[i]; // Sports Name
             UISportsTab.transform.GetChild(4).GetChild(1).GetComponent<Image>().sprite = SportsImage[i]; // Sports Image
-            if (SportsData[i] == 0)
+            if (SportsName[i] == "Olympic Hurdle")
             {
                 UISportsTab.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetFloat("OldRecordRunning").ToString(); // Personal Best Timing
             }
-            else if (SportsData[i] == 1)
+            else if (SportsName[i] == "Olympic Swimming")
             {
                 UISportsTab.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetFloat("OldRecordSwimming").ToString("F2") + "s"; // Personal Best Timing
             }
-            else if (SportsData[i] == 2)
+            else if (SportsName[i] == "Olympic Javelin")
             {
                 UISportsTab.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetFloat("OldRecordJavelin").ToString("F2")+ "m"; // Personal Best Timing
             }
-            else if (SportsData[i] == 3)
+            else if (SportsName[i] == "Olympic Boxing")
             {
                 UISportsTab.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetFloat("OldRecordBoxing").ToString() + " KOs"; // Personal Best Timing
             }
-            else if (SportsData[i] == 4)
+            else if (SportsName[i] == "Olympic Cycling")
             {
                 UISportsTab.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetFloat("OldRecordCycling").ToString("F2") + "s"; // Personal Best Timing
             }
