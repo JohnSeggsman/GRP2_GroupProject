@@ -13,6 +13,7 @@ public class MenuManager : MonoBehaviour
     [Header("Sports Reference - Update if necessary")]
     public string[] SportsName;
     public Sprite[] SportsImage;
+    public float[] SportsData;
 
 
     [Header("Menu Reference - DO NOT TOUCH!")]
@@ -32,7 +33,27 @@ public class MenuManager : MonoBehaviour
             GameObject UISportsTab = Instantiate(SportsTabPrefab, transform.position, Quaternion.identity);
             UISportsTab.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = SportsName[i]; // Sports Name
             UISportsTab.transform.GetChild(4).GetChild(1).GetComponent<Image>().sprite = SportsImage[i]; // Sports Image
-            UISportsTab.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "0:00 or 0.0M"; // Personal Best Timing
+            if (SportsData[i] == 0)
+            {
+                UISportsTab.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetFloat("OldRecordRunning").ToString(); // Personal Best Timing
+            }
+            else if (SportsData[i] == 1)
+            {
+                UISportsTab.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetFloat("OldRecordSwimming").ToString("F2") + "s"; // Personal Best Timing
+            }
+            else if (SportsData[i] == 2)
+            {
+                UISportsTab.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetFloat("OldRecordJavelin").ToString("F2")+ "m"; // Personal Best Timing
+            }
+            else if (SportsData[i] == 3)
+            {
+                UISportsTab.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetFloat("OldRecordBoxing").ToString() + " KOs"; // Personal Best Timing
+            }
+            else if (SportsData[i] == 4)
+            {
+                UISportsTab.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetFloat("OldRecordCycling").ToString("F2") + "s"; // Personal Best Timing
+            }
+
             UISportsTab.transform.GetChild(3).GetComponent<Button>().onClick.AddListener(() => onButtonPressed(1));
             UISportsTab.transform.SetParent(SportsTabLocation.transform, false);
         }
@@ -40,6 +61,8 @@ public class MenuManager : MonoBehaviour
 
     void Update()
     {
+        
+
         BGEffects.transform.Rotate(0, 0, -0.2f);
         Volume88Image.SetActive((Mathf.Round((SettingsSlider.GetComponent<Slider>().value * 100)) == 88));
         if (SettingsSlider.GetComponent<Slider>().value >= 0.2f)
@@ -96,6 +119,7 @@ public class MenuManager : MonoBehaviour
             _AudioMgr = AudioManager.Instance;
             _AudioMgr.GetComponent<AudioManager>().StopBGM();
             SceneManager.LoadScene(SportsSelected);
+
         }
     }
 

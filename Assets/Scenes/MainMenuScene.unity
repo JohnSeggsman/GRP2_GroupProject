@@ -305,6 +305,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17093da445dfe46468b6efb6a03374de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dashMinigameScript: {fileID: 0}
+  bikeMovementScript: {fileID: 0}
+  swimmingScript: {fileID: 0}
+  boxingMinigameScript: {fileID: 0}
+  javelinScript: {fileID: 0}
+  buildIndex: 0
 --- !u!1 &144285652
 GameObject:
   m_ObjectHideFlags: 0
@@ -1126,6 +1132,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 98aa08ddb37f3e940843f006892d0277, type: 3}
   - {fileID: 21300000, guid: 288cdb8664d9c8f4993e79cf8b87e8cc, type: 3}
   - {fileID: 21300000, guid: 5bd99eb63ede4a14ab12a47950f425be, type: 3}
+  SportsData:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
   _AudioMgr: {fileID: 2011169875}
   BackgroundMusic: {fileID: 8300000, guid: 9c20c0c57dc6a544fa3ad2f45212e38c, type: 3}
   HeaderText: {fileID: 1861653626}

@@ -14,7 +14,7 @@ public class BoxingMinigameManager : MonoBehaviour
     public Sprite[] PodiumSprites;
     public float FightTimer, EnemyActionTimer;
     public bool isGameEnded, isKnockedOut, PerfectRound;
-    private int CurrentAnimID, HitCount, PunchCount, BlockCount, DodgeCount, PlayerHP, EnemyHP, EnemyKO, EnemyPKO, EnemyHitStun;
+    private int CurrentAnimID, HitCount, PunchCount, BlockCount, DodgeCount, PlayerHP, EnemyHP, EnemyKO, EnemyPKO, EnemyHitStun, bestEnemyKO;
     [SerializeReference] private float AttackTimer, BlockTimer, HitTimer;
     private string AttackSide;
     private bool isDodging, EnemyKnockout, KeyRotation, SwingLeft, SwingRight, AttackingLeft, AttackingRight;
@@ -367,6 +367,15 @@ public class BoxingMinigameManager : MonoBehaviour
                     GameObject.Find("Canvas").GetComponent<Animator>().enabled = true;
                     GameObject.Find("Canvas").GetComponent<Animator>().SetBool("GameEnded", true);
                     if (isGameEnded == false)
+                    {
+                        if (EnemyKO > PlayerPrefs.GetFloat("OldRecordBoxing", bestEnemyKO))
+                        {
+                            bestEnemyKO = EnemyKO;
+                            PlayerPrefs.SetFloat("OldRecordBoxing", bestEnemyKO);
+
+                            Debug.Log("Saved Score" + bestEnemyKO);
+
+                        }
                         if (EnemyKO > 3)
                         {
                             GameObject.Find("MinigameManager").GetComponent<AudioSource>().PlayOneShot(MinigameSFX[13]);
@@ -402,6 +411,8 @@ public class BoxingMinigameManager : MonoBehaviour
                             GameObject.Find("Canvas/OutcomeResults/MatchOutcome").GetComponent<TextMeshProUGUI>().text = "FIGHT COMPLETED!";
                             GameObject.Find("Canvas/BoxingPodium").GetComponent<Image>().sprite = PodiumSprites[5];
                         }
+                    }
+                        
                     EndMinigame();
                 }
                 catch (System.Exception e)

@@ -143,10 +143,10 @@ public class JavelinScript : MonoBehaviour
         isOver = true;
         //old record upon playerprefs
         newScore = distanceTraveled;
-        if (distanceTraveled > PlayerPrefs.GetFloat("OldRecord", previousScore))
+        if (distanceTraveled > PlayerPrefs.GetFloat("OldRecordJavelin", previousScore))
         {
             previousScore = distanceTraveled;
-            PlayerPrefs.SetFloat("OldRecord", previousScore);
+            PlayerPrefs.SetFloat("OldRecordJavelin", previousScore);
 
             Debug.Log("Saved Score");
 
@@ -171,7 +171,7 @@ public class JavelinScript : MonoBehaviour
         {
             smoothcamscript.titleText.text = "CONGRATULATIONS! \nNEW WORLD RECORD!";
         }
-        smoothcamscript.oldScoreText.text = "PREVIOUS RECORD: " + PlayerPrefs.GetFloat("OldRecord").ToString("F2");
+        smoothcamscript.oldScoreText.text = "PREVIOUS RECORD: " + PlayerPrefs.GetFloat("OldRecordJavelin").ToString("F2");
         smoothcamscript.newScoreText.text = "LATEST RECORD: " + distanceTraveled.ToString("F2");
         smoothcamscript.birdText.text = "BIRDS HIT: " + birdScore;
         //audiosource.Play();

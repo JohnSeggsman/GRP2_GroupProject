@@ -473,6 +473,7 @@ public class SwimmingScript : MonoBehaviour
         }
         else if (currenttimerCount < highesttimerCount) // If fastest time is slower than current time
         {
+            
             if (currenttimerCount < WR && currenttimerCount < OR)
             {
                 spriteWin.sprite = winSprites[0];
@@ -489,6 +490,7 @@ public class SwimmingScript : MonoBehaviour
         }
         else if (currenttimerCount > highesttimerCount) // If fastest time is faster than current time
         {
+            PlayerPrefs.SetFloat("OldRecordSwimming", currenttimerCount);
             if (currenttimerCount < OR)
             {
                 spriteWin.sprite = winSprites[0];
@@ -525,11 +527,13 @@ public class SwimmingScript : MonoBehaviour
 
         if (num == 1)
         {
-            highScoreTxt.text = "Fastest Record: " + highesttimerCount.ToString("00:##.##");
+            
+            highScoreTxt.text = "Fastest Record: " + PlayerPrefs.GetFloat("OldRecordSwimming").ToString("F2");
             currentScoreTxt.text = "Current Record: " + currenttimerCount.ToString("00:##.##");
         }
         else if (num == 2)
         {
+            PlayerPrefs.SetFloat("OldRecordSwimming", currenttimerCount);
             highScoreTxt.text = "NEW WORLD RECORD!";
             currentScoreTxt.text = "Current Record: " + currenttimerCount.ToString("00:##.##");
         }

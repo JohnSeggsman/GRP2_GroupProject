@@ -41,6 +41,8 @@ public class BikeMovementScript : MonoBehaviour
     public float previousScore;
     public float newScore;
 
+    public Text winTitle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -174,6 +176,18 @@ public class BikeMovementScript : MonoBehaviour
 
             Debug.Log("Saved Score");
 
+        }
+        if(smoothcameraBMX.timerStuff <= 26)
+        {
+            winTitle.text = "CONGRATULATIONS!\nNEW WORLD RECORD!";
+        }
+        else if(smoothcameraBMX.timerStuff > 26 && smoothcameraBMX.timerStuff <= 27)
+        {
+            winTitle.text = "CONGRATULATIONS!\nNEW OLYMPIC RECORD!";
+        }
+        else if (smoothcameraBMX.timerStuff > 27)
+        {
+            winTitle.text = "CONGRATULATIONS!\nSKILL ISSUE!";
         }
         oldScoreText.text = "PREVIOUS RECORD: " + PlayerPrefs.GetFloat("OldRecordCycling").ToString("F2") + "S";
         newScoreText.text = "LATEST RECORD: " + smoothcameraBMX.timerStuff.ToString("F2") + "S";

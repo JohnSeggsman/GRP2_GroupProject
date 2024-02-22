@@ -17,6 +17,8 @@ public class DashMinigameManager : MonoBehaviour
     private int ScoreObtained, TapCount, JumpCount, SlideCount;
     private float SprintDuration, RunTimer, JumpTimer, SlideTimer, ObstacleTimer;
 
+    private int bestScoreObtained;
+
     void Start()
     {
         if (Instance == null)
@@ -188,6 +190,15 @@ public class DashMinigameManager : MonoBehaviour
                 try
                 {
                     if (isGameEnded == false)
+                    {
+                        if (ScoreObtained > PlayerPrefs.GetFloat("OldRecordRunning", bestScoreObtained))
+                        {
+                            bestScoreObtained = ScoreObtained;
+                            PlayerPrefs.SetFloat("OldRecordRunning", bestScoreObtained);
+
+                            Debug.Log("Saved Score" + bestScoreObtained);
+
+                        }
                         if (RaceTimer < 50)
                         {
                             ScoreObtained = (int)((9999 - TapCount) * (SprintDuration / RaceTimer) * (100 / (100 + RaceTimer)));
@@ -224,6 +235,8 @@ public class DashMinigameManager : MonoBehaviour
                             GameObject.Find("Canvas/OutcomeResults/RaceOutcome").GetComponent<TextMeshProUGUI>().text = "RACE COMPLETED!";
                             GameObject.Find("Canvas/HurdlePodium").GetComponent<Image>().sprite = PodiumSprites[5];
                         }
+                    }
+                        
                     EndMinigame();
                 }
                 catch (System.Exception e)
