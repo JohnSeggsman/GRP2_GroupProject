@@ -205,10 +205,23 @@ public class BikeMovementScript : MonoBehaviour
         {
             winTitle.text = "CONGRATULATIONS!\nNEW OLYMPIC RECORD!";
         }
-        else if (smoothcameraBMX.timerStuff > 27)
+        else if (smoothcameraBMX.timerStuff > 27 && smoothcameraBMX.timerStuff < 30)
+        {
+            winTitle.text = "CONGRATULATIONS!\nFIRST PLACE!";
+        }
+        else if (smoothcameraBMX.timerStuff > 30 && smoothcameraBMX.timerStuff < 35)
+        {
+            winTitle.text = "CONGRATULATIONS!\nSECOND PLACE!";
+        }
+        else if (smoothcameraBMX.timerStuff > 35 && smoothcameraBMX.timerStuff < 40)
+        {
+            winTitle.text = "CONGRATULATIONS!\nTHIRD PLACE!";
+        }
+        else if (smoothcameraBMX.timerStuff > 40)
         {
             winTitle.text = "CONGRATULATIONS!\nSKILL ISSUE!";
         }
+
         oldScoreText.text = "PREVIOUS RECORD: " + PlayerPrefs.GetFloat("OldRecordCycling").ToString("F2") + "s";
         newScoreText.text = "LATEST RECORD: " + newScoreC.ToString("F2") + "S";
 
