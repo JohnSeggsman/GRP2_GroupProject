@@ -153,6 +153,7 @@ public class DashMinigameManager : MonoBehaviour
             bestTimeObtained = RaceTimer;
             PlayerPrefs.SetFloat("OldRecordRunningTime", bestTimeObtained);
         }
+
         GameObject.Find("Canvas").GetComponent<Animator>().SetTrigger("TriggerOutcome");
         GameObject.Find("Canvas/OutcomeResults/OutcomeResult1").GetComponent<TextMeshProUGUI>().text = "Race Time: " + System.Math.Round(RaceTimer, 1).ToString() + "s";
         GameObject.Find("Canvas/OutcomeResults/OutcomeResult2").GetComponent<TextMeshProUGUI>().text = "Steps Taken: " + TapCount;

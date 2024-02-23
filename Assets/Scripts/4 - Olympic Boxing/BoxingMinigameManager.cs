@@ -303,6 +303,24 @@ public class BoxingMinigameManager : MonoBehaviour
     {
         isGameEnded = true;
         AudioManager.Instance.StopBGM();
+
+        if (EnemyKO > PlayerPrefs.GetFloat("OldRecordBoxing", bestEnemyKO))
+        {
+            bestEnemyKO = EnemyKO;
+            PlayerPrefs.SetFloat("OldRecordBoxing", bestEnemyKO);
+
+            Debug.Log("Saved Score" + bestEnemyKO);
+
+        }
+        if (EnemyPKO > PlayerPrefs.GetFloat("OldRecordPerfectBoxing", bestEnemyPKO))
+        {
+            bestEnemyPKO = EnemyPKO;
+            PlayerPrefs.SetFloat("OldRecordPerfectBoxing", bestEnemyPKO);
+
+            Debug.Log("Saved Score" + bestEnemyPKO);
+
+        }
+
         GameObject.Find("Canvas/OutcomeResults/OutcomeResult1").GetComponent<TextMeshProUGUI>().text = "Hit Accuracy: " + System.Math.Round(((float)HitCount / PunchCount) * 100, 1) + "%";
         GameObject.Find("Canvas/OutcomeResults/OutcomeResult2").GetComponent<TextMeshProUGUI>().text = "Punches Landed: " + HitCount;
         GameObject.Find("Canvas/OutcomeResults/OutcomeResult3").GetComponent<TextMeshProUGUI>().text = "Knockouts: " + EnemyKO;
@@ -367,23 +385,7 @@ public class BoxingMinigameManager : MonoBehaviour
                     GameObject.Find("Canvas").GetComponent<Animator>().enabled = true;
                     GameObject.Find("Canvas").GetComponent<Animator>().SetBool("GameEnded", true);
                     if (isGameEnded == false)
-                    {
-                        if (EnemyKO > PlayerPrefs.GetFloat("OldRecordBoxing", bestEnemyKO))
-                        {
-                            bestEnemyKO = EnemyKO;
-                            PlayerPrefs.SetFloat("OldRecordBoxing", bestEnemyKO);
-
-                            Debug.Log("Saved Score" + bestEnemyKO);
-
-                        }
-                        if (EnemyPKO > PlayerPrefs.GetFloat("OldRecordPerfectBoxing", bestEnemyPKO))
-                        {
-                            bestEnemyPKO = EnemyPKO;
-                            PlayerPrefs.SetFloat("OldRecordPerfectBoxing", bestEnemyPKO);
-
-                            Debug.Log("Saved Score" + bestEnemyPKO);
-
-                        }
+                    {  
                         if (EnemyKO > 3)
                         {
                             GameObject.Find("MinigameManager").GetComponent<AudioSource>().PlayOneShot(MinigameSFX[13]);

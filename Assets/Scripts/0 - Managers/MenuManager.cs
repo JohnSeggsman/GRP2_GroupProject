@@ -69,12 +69,12 @@ public class MenuManager : MonoBehaviour
                     //wr
                     AwardImages[0].sprite = AwardSprites[0];
                 }
-                else if ((PlayerPrefs.GetFloat("OldRecordRunningTime") >= 38.0f && PlayerPrefs.GetFloat("OldRecordRunningTime") < 39.6f && PlayerPrefs.GetFloat("OldRecordRunning") >= 6750) || (PlayerPrefs.GetFloat("OldRecordRunningTime") < 38.0f && PlayerPrefs.GetFloat("OldRecordRunning") < 7000))
+                else if ((PlayerPrefs.GetFloat("OldRecordRunningTime") >= 38.0f && PlayerPrefs.GetFloat("OldRecordRunningTime") < 39.6f && PlayerPrefs.GetFloat("OldRecordRunning") >= 6750) || (PlayerPrefs.GetFloat("OldRecordRunningTime") < 38.0f && PlayerPrefs.GetFloat("OldRecordRunning") > 6750 && PlayerPrefs.GetFloat("OldRecordRunning") < 7000))
                 {
                     //or
                     AwardImages[0].sprite = AwardSprites[1];
                 }
-                else if ((PlayerPrefs.GetFloat("OldRecordRunningTime") >= 39.6f && PlayerPrefs.GetFloat("OldRecordRunningTime") < 43) || (PlayerPrefs.GetFloat("OldRecordRunningTime") < 39.6f && PlayerPrefs.GetFloat("OldRecordRunning") < 6750))
+                else if ((PlayerPrefs.GetFloat("OldRecordRunningTime") >= 39.6f && PlayerPrefs.GetFloat("OldRecordRunningTime") < 43) || (PlayerPrefs.GetFloat("OldRecordRunningTime") < 39.6f && PlayerPrefs.GetFloat("OldRecordRunning") > 5000 && PlayerPrefs.GetFloat("OldRecordRunning") < 6750))
                 {
                     //gold
                     AwardImages[0].sprite = AwardSprites[2];
@@ -203,8 +203,6 @@ public class MenuManager : MonoBehaviour
                     AwardImages[4].sprite = AwardSprites[24];
                 }
             }
-
-
         }
     }
 
